@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <span class="card-title">{{ set.name }}</span>
+    <div class="card-action">
+            <a href="{% url 'update_set' set.id %}">Edit</a>
+            <a href="{% url 'delete_set' set.id %}">Delete</a>
+          </div>
+</div>
+
+{% endblock %}
