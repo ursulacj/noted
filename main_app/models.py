@@ -12,6 +12,7 @@ class Set(models.Model):
 class Flashcard(models.Model):
   question = models.TextField(max_length=500)
   answer = models.TextField(max_length=500)
+  set = models.ForeignKey(Set, on_delete=models.CASCADE)
   
   def __str__(self):
     return f"""question: {self.question}
