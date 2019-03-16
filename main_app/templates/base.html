@@ -30,8 +30,8 @@
                     </form>
                 </div>
                 <ul class="right">
-                    <li><a href="#">Create</a></li>
-                    <li><a href="#">My Sets</a></li>
+                    <li><a href="{% url 'create_set' %}">Create</a></li>
+                    <li><a href="{% url 'sets_index' %}">My Sets</a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="dropdown1" class="dropdown-content">
                             <li><a href="#!">My Account</a></li>
@@ -42,4 +42,9 @@
             </div>
         </nav>
     </header>
+<main class="container">
+        {% block content %}
+        {% endblock %}
+</main>
+
 </body>
