@@ -27,7 +27,7 @@ class SetUpdate(UpdateView):
 
 class SetDelete(DeleteView):
   model = Set
-  fields = '__all__'
+  success_url = '/sets/'
 
 # class FlashcardCreate(CreateView):
 #   model = Flashcard
