@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def home(request):
   return render(request, 'home.html')
+
+def sets_index(request):
+  return render(request, 'sets/index.html', { 'sets': sets})
