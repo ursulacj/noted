@@ -2,6 +2,7 @@
 {% block content %}
 
 {% for set in sets %} 
+    <a href="{% url 'show_set' set.id %}">
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ set.name }}</span>
@@ -9,6 +10,6 @@
                 <p>Description: {{ set.description }}</p>
             </div>
         </div>
-
+    </a>
 {% endfor %}
 {% endblock %}
