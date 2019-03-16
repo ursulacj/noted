@@ -17,29 +17,35 @@
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;[ noTed. ]</a></li>
-                </ul>
-                <div class="nav-wrapper left">
-                    <form>
-                        <div class="input-field">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
+                <a href="/" class="brand-logo">&nbsp;&nbsp;[ noTed. ]</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="left hide-on-med-and-down">
+                        <div class="nav-wrapper left">
+                            <form>
+                                <div class="input-field">
+                                    <input id="search" type="search" required>
+                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                    <i class="material-icons">close</i>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <ul class="right">
-                    <li><a href="{% url 'create_set' %}">Create</a></li>
-                    <li><a href="{% url 'sets_index' %}">My Sets</a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
+                    </ul>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{% url 'create_set' %}">Create</a></li>
+                        <li><a href="{% url 'sets_index' %}">My Sets</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
             </div>
         </nav>
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">My Account</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">My Groups</a></li>
+            </ul>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="#">Create</a></li>
+                <li><a href="#">My Sets</a></li>
+                <li><a href="#">Login</a></li>
             </ul>
     </header>
 <main class="container">
