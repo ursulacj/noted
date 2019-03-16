@@ -4,5 +4,6 @@ from .models import Flashcard
 
 class FlashcardForm(forms.Form):
   class Meta:
-    model = Feeding
+    model = Flashcard
     fields = '__all__'
+

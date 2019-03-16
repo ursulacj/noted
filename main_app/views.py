@@ -17,8 +17,6 @@ def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   return render(request, 'sets/show.html', {'set': set } )
 
-def create_flashcards(request, set_id):
-
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
