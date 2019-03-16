@@ -2,18 +2,12 @@
     margin: 0 150px !important;
 }
 
-.homeImage{
-    background-image: url("../../images/test.jpeg");
-    width: 2fr;
-    height: 1fr;;
-}
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
-
 
 main {
     flex: 1 0 auto;
@@ -22,4 +16,48 @@ main {
 footer.page-footer {
     padding-top: 0;
     text-align: right;
+}
+.pageWrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 12fr .5fr 5.5fr 5.5fr;
+}
+
+.homeImage{
+    background-image: url("/static/images/test.jpeg");
+    opacity: .5;
+    width: 2fr;
+    height: 1fr;
+    grid-row: 1 / 3;
+    grid-column: 1 / 3;
+    margin-top: 20px;
+}
+
+.signUp {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    margin-bottom: -25px;
+    margin-left: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.featureDeck1 {
+    grid-row: 3 / 5;
+    grid-column: 1 / 2;
+    border: 2px solid teal;
+    margin: 50px 20px 20px 0;
+}
+.featureDeck2 {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    border: 2px solid teal;
+    margin: 50px 0 5px 0;
+
+}
+.featureDeck3 {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+    border: 2px solid teal;
+    margin: 5px 0 20px 0;
 }
