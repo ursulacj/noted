@@ -1,10 +1,14 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Set(models.Model):
   name = models.CharField(max_length=200)
   subject = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
+
+  def get_absolute_url(self):
+    return reverse('show_set', kwargs={ 'set_id': self.id })
 
   def __str__(self):
     return self.name
