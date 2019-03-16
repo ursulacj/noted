@@ -10,14 +10,24 @@ def home(request):
 
 def sets_index(request):
   sets = Set.objects.all()
-  for set in sets:
-    print(set.name)
-  return render(request, 'sets/index.html', { 'sets': sets })
+  return render(request, 'sets/index.html', { 'sets': sets } )
+
+def show_set(request, set_id):
+  set = Set.objects.get(id=set_id)
+  return render(request, 'sets/show.html', {'set': set } )
 
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
   success_url = '/sets/'
+
+class SetUpdate(UpdateView):
+  model = Set
+  fields = '__all__'
+
+class SetDelete(DeleteView):
+  model = Set
+  fields = '__all__'
 
 # class FlashcardCreate(CreateView):
 #   model = Flashcard
