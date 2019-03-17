@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FlashcardForm
 
 # Create your views here.
 
@@ -27,7 +28,7 @@ class SetUpdate(UpdateView):
 
 class SetDelete(DeleteView):
   model = Set
-  fields = '__all__'
+  success_url = '/sets/'
 
 # class FlashcardCreate(CreateView):
 #   model = Flashcard
