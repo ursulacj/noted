@@ -9,3 +9,5 @@ urlpatterns = [
   path('sets/<int:pk>/update/', views.SetUpdate.as_view(), name='update_set'),
   path('sets/<int:pk>/delete/', views.SetDelete.as_view(), name='delete_set'),
 ]
+
+#####
