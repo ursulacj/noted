@@ -23,9 +23,7 @@ body {
     flex-direction: column;
 }
 
-/* input, textarea, select, button {
-    color: black;
-} */
+
 
 main {
     flex: 1 0 auto;

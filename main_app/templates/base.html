@@ -20,21 +20,26 @@
                     <a href="/" class="brand-logo"><img src="/static/images/logo.png" alt="noted" class="logoImg"></a>
                 <a href="/" class="brand-logo logoText">[ noTed. ]</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-                        <div class="nav-wrapper left hide-on-med-and-down">
-                            <form>
-                                <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                    <i class="material-icons">close</i>
-                                </div>
-                            </form>
+                
+                <div class="nav-wrapper left hide-on-med-and-down">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
                         </div>
-                    
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
-                        <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1" class="nav">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </form>
+                </div>
+                
+                <ul class="right hide-on-med-and-down">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
+                    <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
+                        <li><a href="{% url 'logout' %}" data-target="dropdown1" class="nav dropdown-trigger">Log Out<i class="material-icons right">arrow_drop_down</i></a></li>
+                    {% else %}
+                        <li><a href="" class="nav">About</a></li>
+                        <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
+                    {% endif %}
                     </ul>
             </div>
         </nav>
