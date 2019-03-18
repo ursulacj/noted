@@ -1,5 +1,20 @@
+nav {
+    background-color: white;
+}
+.brand-logo, li, i, .input-field, input, textarea, .dropdown-trigger, .nav{
+    color: black !important;
+}
+
+
 .input-field {
-    margin: 0 150px !important;
+    margin: 0 220px !important;
+    width: 100% !important;
+}
+
+.logoImg{
+    width: 20%;
+    height: 13%;
+    margin: 3px;
 }
 
 body {
@@ -8,6 +23,8 @@ body {
     flex-direction: column;
 }
 
+
+
 main {
     flex: 1 0 auto;
 }
@@ -15,11 +32,15 @@ main {
 @media only screen and (min-width: 992px) {
     .container {
         width: 100% !important;
+    }
+    .logoText {
+        margin: 0 60px;
     }    
 }
 footer.page-footer {
     padding-top: 0;
     text-align: right;
+    background-color: rgb(31, 183, 210);
 }
 .pageWrapper {
     display: grid;
@@ -45,6 +66,8 @@ footer.page-footer {
     margin-left: 20px;
     width: 100%;
     border-radius: 10px;
+    background-color: rgb(31, 183, 210);
+    color: white;
 }
 
 .featureDeck1 {
