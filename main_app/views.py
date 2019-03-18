@@ -1,14 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-<<<<<<< HEAD
+from django.forms import inlineformset_factory
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import FlashcardForm
-=======
-from .forms import FlashcardForm, SetFlashcardFormSet
->>>>>>> 871d0396ed866e9e81252f514ee1b9ae23fb1bb2
 
 # Create your views here.
 
@@ -63,7 +59,19 @@ def flashcards_index(request, set_id):
 
 def create_flashcards(request, set_id):
   set = Set.objects.get(id=set_id)
+  SetFlashcardFormSet = inlineformset_factory(Set, Flashcard,       fields=['question', 'answer'], extra=1, can_delete=True)
+
+  if request.method == 'POST':
+    formset = SetFlashcardFormSet(request.POST, instance=set)
+    if formset.is_valid():
+      formset.save()
+      # new_flashcard = form.save(commit=False)
+      # new_flashcard.set_id = set_id
+      # new_flashcard.save()
+      return redirect('create_flashcards', set_id=set_id)
+
+  formset = SetFlashcardFormSet(instance=set)
   return render(request, 'main_app/flashcard_form.html', {
     'set': set,
-    'form': SetFlashcardFormSet,
+    'form': formset,
   })
