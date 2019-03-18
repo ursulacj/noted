@@ -30,6 +30,7 @@ class Flashcard(models.Model):
 class Note(models.Model):
   content = models.TextField()
 
+
   def __str__(self):
     return self.content
 

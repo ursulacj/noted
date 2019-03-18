@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-from .forms import FlashcardForm, SetFlashcardFormSet
-from django.forms import modelform_factory, inlineformset_factory
-
+from django.forms import inlineformset_factory
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 
 # Create your views here.
 
@@ -50,7 +50,19 @@ def signup(request):
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
-  success_url = '/sets/'
+  # def set_id(self, form):
+  #   set_id = Set.objects.get(name=form.__dict__['instance'])
+  #   return set_id
+  # def form_valid(self, form):
+  #   def set_id(self, form):
+  #     set_id = Set.objects.get(name=form.__dict__['instance'])
+  #     return set_id
+  #   print('this is self', form.__dict__['instance'])
+  #   Set.objects.get(name=form.__dict__['instance'])
+  #   return super().form_valid(form)
+  #   success_url = f'/sets/{set_id}/flashcards/create/'
+  def get_success_url(self):
+    return reverse('create_flashcards', args=(self.object.id,))
 
 class SetUpdate(UpdateView):
   model = Set
@@ -60,20 +72,22 @@ class SetDelete(DeleteView):
   model = Set
   success_url = '/sets/'
 
-class FlashcardCreate(CreateView):
-  model = Flashcard
-  fields = '__all__'
-
-# class FlashcardCreate(CreateView):
-#   form_class = FlashcardForm
-#   template_name = 'main_app/flashcard_form.html'
+@login_required
 def flashcards_index(request, set_id):
   pass
 
 def create_flashcards(request, set_id):
   set = Set.objects.get(id=set_id)
+  SetFlashcardFormSet = inlineformset_factory(Set, Flashcard, fields=['question', 'answer'], extra=1, can_delete=True)
+
+  if request.method == 'POST':
+    formset = SetFlashcardFormSet(request.POST, instance=set)
+    if formset.is_valid():
+      formset.save()
+      return redirect('create_flashcards', set_id=set_id)
+
+  formset = SetFlashcardFormSet(instance=set)
   return render(request, 'main_app/flashcard_form.html', {
     'set': set,
-    'form': SetFlashcardFormSet,
+    'form': formset,
   })
-
