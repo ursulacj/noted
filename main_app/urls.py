@@ -8,4 +8,7 @@ urlpatterns = [
   path('sets/<int:set_id>/', views.show_set, name='show_set'),
   path('sets/<int:pk>/update/', views.SetUpdate.as_view(), name='update_set'),
   path('sets/<int:pk>/delete/', views.SetDelete.as_view(), name='delete_set'),
+  # path('sets/<int:pk>/flashcards/create/', views.FlashcardCreate.as_view(), name='create_flashcards')
+  path('sets/<int:set_id>/flashcards/', views.flashcards_index, name='flashcards_index'),
+  path('sets/<int:set_id>/flashcards/create/', views.create_flashcards, name='create_flashcards'),
 ]
