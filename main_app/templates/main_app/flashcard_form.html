@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form> -->
+<h1>Add Flashcards</h1>
+  <form action="" method="post">
+  {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+  <input type="submit" value="+" class="btn btn-floating">
+</form>
+{% endblock %}
