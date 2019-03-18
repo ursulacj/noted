@@ -1,14 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-<<<<<<< HEAD
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import FlashcardForm
-=======
 from .forms import FlashcardForm, SetFlashcardFormSet
->>>>>>> 871d0396ed866e9e81252f514ee1b9ae23fb1bb2
 
 # Create your views here.
 
@@ -34,7 +31,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('index')
+      return redirect('/sets/')
     else:
       error_message = 'Invalid credentials - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
