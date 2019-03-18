@@ -8,7 +8,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 # Create your views here.
 
 def home(request):
@@ -56,10 +55,6 @@ class SetUpdate(LoginRequiredMixin, UpdateView):
 class SetDelete(LoginRequiredMixin, DeleteView):
   model = Set
   success_url = '/sets/'
-
-# class FlashcardCreate(CreateView):
-#   form_class = FlashcardForm
-#   template_name = 'main_app/flashcard_form.html'
 
 @login_required
 def flashcards_index(request, set_id):
