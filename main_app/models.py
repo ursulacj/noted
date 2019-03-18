@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-
 from django.contrib.auth.models import User
 
 
@@ -20,6 +19,7 @@ class Set(models.Model):
 class Flashcard(models.Model):
   question = models.TextField(max_length=500)
   answer = models.TextField(max_length=500)
+  comment = models.TextField(max_length=500)
   set = models.ForeignKey(Set, on_delete=models.CASCADE)
   
   def __str__(self):
@@ -28,6 +28,7 @@ class Flashcard(models.Model):
 
 class Note(models.Model):
   content = models.TextField()
+  set = models.OneToOneField(Set, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.content
@@ -35,6 +36,7 @@ class Note(models.Model):
 class Comment(models.Model):
   content = models.TextField(max_length=500)
   timestamp = models.DateField(auto_now_add=True)
+  set = models.ForeignKey(Set, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.content
