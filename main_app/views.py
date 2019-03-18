@@ -2,9 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+<<<<<<< HEAD
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import FlashcardForm
+=======
+from .forms import FlashcardForm, SetFlashcardFormSet
+>>>>>>> 871d0396ed866e9e81252f514ee1b9ae23fb1bb2
 
 # Create your views here.
 
@@ -52,5 +56,14 @@ class SetDelete(DeleteView):
   success_url = '/sets/'
 
 # class FlashcardCreate(CreateView):
-#   model = Flashcard
-#   fields = '__all__'
+#   form_class = FlashcardForm
+#   template_name = 'main_app/flashcard_form.html'
+def flashcards_index(request, set_id):
+  pass
+
+def create_flashcards(request, set_id):
+  set = Set.objects.get(id=set_id)
+  return render(request, 'main_app/flashcard_form.html', {
+    'set': set,
+    'form': SetFlashcardFormSet,
+  })
