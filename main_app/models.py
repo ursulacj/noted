@@ -8,6 +8,7 @@ class Set(models.Model):
   name = models.CharField(max_length=200)
   subject = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
+  is_public = models.BooleanField()
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def get_absolute_url(self):
