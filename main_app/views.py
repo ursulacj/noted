@@ -3,13 +3,11 @@ from django.http import HttpResponse
 from .models import Set, Flashcard
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from .forms import FlashcardForm, SetFlashcardFormSet
 from django.forms import modelform_factory, inlineformset_factory
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import FlashcardForm
-
-from .forms import FlashcardForm, SetFlashcardFormSet
 
 # Create your views here.
 
@@ -26,19 +24,8 @@ def sets_index(request):
 
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
-  flashcardFormset = inlineformset_factory(Set, Flashcard, fields=('question', 'answer'))
-
-  formset = flashcardFormset()
-  if request.method == 'POST':
-    formset = flashcardFormset(request.POST, instance=set)
-    if formset.is_valid():
-      formset.save()
-
-      return redirect('show_set', set_id=set_id)
-  formset = flashcardFormset(instance=set)
   return render(request, 'sets/show.html', {
     'set': set, 
-    'formset': formset,
     })
 
 def signup(request):
