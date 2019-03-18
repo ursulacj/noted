@@ -13,7 +13,7 @@ def home(request):
   return render(request, 'home.html')
 
 def sets_index(request):
-  sets = Set.objects.all()
+  sets = Set.objects.filter(user=request.user)
   return render(request, 'sets/index.html', { 'sets': sets } )
 
 def show_set(request, set_id):
