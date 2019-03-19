@@ -1,18 +1,42 @@
+from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Set, Flashcard
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from .models import Set, Flashcard
 from django.forms import inlineformset_factory
+from .forms import ContactForm
+
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+
+from django.core.mail import send_mail, BadHeaderError
 
 # Create your views here.
 
 def home(request):
   return render(request, 'home.html')
+
+def contact_us(request):
+  if request.method == 'GET':
+    form = ContactForm()
+  else:
+    form = ContactForm(request.POST)
+    if form.is_valid():
+      subject = form.cleaned_data['subject']
+      from_email = form.cleaned_data['from_email']
+      message = form.cleaned_data['message']
+      try:
+        send_mail(subject, message, from_email, ['admin@noted.com'])
+      except BadHeaderError:
+        return HttpResponse('Invalid header found.')
+      return redirect('success')
+  return render(request, 'contact_us.html', {'form' : form, 'mainclass' : "thin"})
+
+def successView(request):
+  return render(request, 'success.html', {'mainclass' : "thin"})
 
 def sets_index(request):
   sets = Set.objects.all()
@@ -46,6 +70,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
 
 class SetCreate(CreateView):
   model = Set

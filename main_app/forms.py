@@ -1,13 +1,15 @@
-# [18/Mar/2019 15:53:35] "GET /sets/create/js/materialize.min.js HTTP/1.1" 404 3875
-# <tr><th><label for="id_name">Name:</label></th><td><input type="text" name="name" value="happy" maxlength="200" required id="id_name"></td></tr>
-# <tr><th><label for="id_subject">Subject:</label></th><td><input type="text" name="subject" value="happy" maxlength="200" required id="id_subject"></td></tr>
-# <tr><th><label for="id_description">Description:</label></th><td><textarea name="description" cols="40" rows="10" maxlength="500" required id="id_description">
-# happy</textarea></td></tr>
-# <tr><th><label for="id_user">User:</label></th><td><select name="user" required id="id_user">
-#   <option value="">---------</option>
+from django import forms
 
-#   <option value="1" selected>admin</option>
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    from_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
 
-# </select></td></tr>
-# [18/Mar/2019 15:53:45] "POST /sets/create/ HTTP/1.1" 302 0
-# [18/Mar/2019 15:53:45] "GET /sets/ HTTP/1.1" 200 4139
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        self.fields['contact_name'].label = "Your name:"
+        self.fields['from_email'].label = "Your email:"
+        self.fields['subject'].label = "Subject:"
+        self.fields['message'].label = "What do you want to say?"
+

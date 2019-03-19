@@ -12,4 +12,6 @@ urlpatterns = [
   path('accounts/signup', views.signup, name='signup'),
   path('sets/<int:set_id>/flashcards/', views.flashcards_index, name='flashcards_index'),
   path('sets/<int:set_id>/flashcards/create/', views.create_flashcards, name='create_flashcards'),
+  path('contact_us/', views.contact_us, name='contact_us'),
+  path('success/', views.successView, name='success'),
 ]
