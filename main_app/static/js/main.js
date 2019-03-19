@@ -7,5 +7,10 @@
     });
 
     var sideNav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sideNav, options);
+    M.Sidenav.init(sideNav, {});
 
+let carousel = document.querySelector('.carousel');
+M.Carousel.init(carousel, {
+    indicators: true,
+    fullWidth: true
+  });
