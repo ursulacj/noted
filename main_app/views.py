@@ -1,6 +1,9 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+
+from .models import Set, Flashcard, Group
 from django.http import HttpResponse, HttpResponseRedirect
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Set, Flashcard
@@ -13,7 +16,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
-
 
 
 def home(request):
@@ -46,12 +48,11 @@ def sets_index(request):
   sets = Set.objects.all()
   return render(request, 'sets/index.html', { 'sets': sets } )
 
-
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   return render(request, 'sets/show.html', {
     'set': set, 
-    })
+  })
 
 def signup(request):
   error_message = ''
@@ -76,7 +77,7 @@ def signup(request):
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
-  # redirect user to the flashcard creation page when 
+  # redirect user to the flashcard creation page when a set is created
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
 
@@ -107,4 +108,10 @@ def create_flashcards(request, set_id):
   return render(request, 'main_app/flashcard_form.html', {
     'set': set,
     'form': formset,
+  })
+
+def groups_index(request):
+  groups = Group.objects.all()
+  return render(request, 'groups/index.html', {
+    'groups': groups,
   })
