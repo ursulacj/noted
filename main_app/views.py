@@ -51,12 +51,14 @@ def successView(request):
 
 def sets_index(request):
   sets = Set.objects.all()
-  return render(request, 'sets/index.html', { 'sets': sets } )
+  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin" } )
 
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
+  flashcards = set.flashcard_set.all()
+  print('this is set', set)
   return render(request, 'sets/show.html', {
-    'set': set, 
+    'set': set, 'flashcards' : flashcards, 'mainclass' : "thin"
     })
 
 def signup(request):

@@ -16,12 +16,13 @@
             <img class="activator" src="/static/images/test.jpeg">
         </div>
     <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{ set1.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
+        <span class="card-title activator grey-text text-darken-4 left">{{ set1.name }}</span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
     </div>
         <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ set1.name }}<i class="material-icons right">close</i></span>
+            <span class="card-title grey-text text-darken-4 left-align">{{ set1.name }}<i class="material-icons right">close</i></span>
             <p>{{ set1.subject }}</p>
             <p>{{ set1.description }}</p>
+            <a href="{% url 'show_set' set1.id %}" class="bottom-align">See Flashcards!</a>
         </div>
     </div>
     <div class="featureDeck2 card">
@@ -29,12 +30,13 @@
                 <img class="activator" src="/static/images/test.jpeg">
             </div>
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ set2.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set2.id %}">See Flashcards!</a></p>
+            <span class="card-title activator grey-text text-darken-4 left">{{ set2.name }}</span><p><a href="{% url 'show_set' set2.id %}">See Flashcards!</a></p>
         </div>
         <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ set2.name }}<i class="material-icons right">close</i></span>
+            <span class="card-title grey-text text-darken-4 left-align">{{ set2.name }}<i class="material-icons right">close</i></span>
             <p>{{ set2.subject }}</p>
             <p>{{ set2.description }}</p>
+            <a href="{% url 'show_set' set2.id %}" class="bottom-align">See Flashcards!</a>
         </div>
     </div>
     <div class="featureDeck3 card">
@@ -42,12 +44,14 @@
                 <img class="activator" src="/static/images/test.jpeg">
             </div>
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ set3.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set3.id %}">See Flashcards!</a></p>
+            <span class="card-title activator grey-text text-darken-4 left">{{ set3.name }}<i class="material-icons right"></i></span><p><a href="{% url 'show_set' set3.id %}">See Flashcards!</a></p>
         </div>
         <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ set3.name }}<i class="material-icons right">close</i></span>
+            <span class="card-title grey-text text-darken-4 left-align">{{ set3.name }}<i class="material-icons right">close</i></span>
             <p>{{ set3.subject }}</p>
             <p>{{ set3.description }}</p>
+            <br>
+            <a href="{% url 'show_set' set3.id %}" class="bottom-align">Go to the Flashcards!</a>
         </div>
     </div>
 

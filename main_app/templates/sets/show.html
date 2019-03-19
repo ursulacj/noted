@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="card">
     <span class="card-title">{{ set.name }}</span>
     <div class="card-action">
-            <a href="{% url 'update_set' set.id %}">Edit</a>
-            <a href="{% url 'delete_set' set.id %}">Delete</a>
+            <a href="{% url 'update_set' set.id %}" class="btn">Edit</a>
+            <a href="{% url 'create_flashcards' set.id %}" class="btn">Add/Edit Flashcards</a>
+            <a href="{% url 'delete_set' set.id %}" class="btn btn-red">Delete</a>
           </div>
 </div>
 
+
+
+<div class="carousel carousel-slider center" data-target="carousel">
+    {% for flashcard in flashcards %} 
+    <div class="carousel-item noted-blue card flashcards-slide" href="#one!">
+      <span class="card-title white-text center">{{ flashcard.question }}</span>
+      <a class="btn waves-effect white grey-text darken-text-2 activator center flip-btn">flip</a>
+      <div class="card-reveal noted-blue center" href="#two!">
+        <span class="card-title white-text center">{{ flashcard.answer }}</span>
+        <a class="card-title btn waves-effect white grey-text darken-text-2 center flip-btn">flip</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
