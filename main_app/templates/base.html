@@ -22,7 +22,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 
                 <div class="left hide-on-med-and-down">
-                    <form>
+                    <form id="searchform" action="#" method="get" accept-charset="utf-8">
                         <div class="input-field">
                             <input id="search" type="search" required>
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -33,10 +33,13 @@
                 
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'about' %}" class="nav">About</a></li>
                     <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
                     <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
+                    <li><a href="{% url 'groups_index' %}" class="nav">Groups</a></li>
                     <li><a href="{% url 'logout' %}"class="nav">Log Out</a></li>
                         <li class="dropdown-trigger" data-target="dropdown1"> My Account <i class="material-icons right">arrow_drop_down</i></li>
+
                     {% else %}
                         <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
                     {% endif %}
@@ -44,7 +47,7 @@
             </div>
         </nav>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="{% url 'about' %}" class="nav">About</a></li>
+   
                 <li><a href="#!">My Account</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">My Groups</a></li>

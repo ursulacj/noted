@@ -1,6 +1,9 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+
+from .models import Set, Flashcard, Group
 from django.http import HttpResponse, HttpResponseRedirect
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Set, Flashcard
@@ -13,7 +16,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
-
 
 
 def home(request):
@@ -84,7 +86,7 @@ def signup(request):
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
-  # redirect user to the flashcard creation page when 
+  # redirect user to the flashcard creation page when a set is created
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
 
@@ -95,6 +97,7 @@ class SetUpdate(UpdateView):
 class SetDelete(DeleteView):
   model = Set
   success_url = '/sets/'
+
 
 @login_required
 def flashcards_index(request, set_id):
@@ -114,4 +117,20 @@ def create_flashcards(request, set_id):
   return render(request, 'main_app/flashcard_form.html', {
     'set': set,
     'form': formset,
+  })
+
+def groups_index(request):
+  groups = Group.objects.all()
+  return render(request, 'groups/index.html', {
+    'groups': groups,
+  })
+
+class GroupCreate(CreateView):
+  model = Group
+  fields = '__all__'
+
+def show_group(request, group_id):
+  group = Group.objects.get(id=group_id)
+  return render(request, 'groups/show.html', {
+    'group': group, 
   })
