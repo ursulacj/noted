@@ -42,10 +42,6 @@ def sets_index(request):
   sets = Set.objects.all()
   return render(request, 'sets/index.html', { 'sets': sets } )
 
-# def show_set(request, set_id):
-#   set = Set.objects.get(id=set_id)
-#   return render(request, 'sets/show.html', {'set': set } )
-
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   return render(request, 'sets/show.html', {
@@ -75,17 +71,6 @@ def signup(request):
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
-  # def set_id(self, form):
-  #   set_id = Set.objects.get(name=form.__dict__['instance'])
-  #   return set_id
-  # def form_valid(self, form):
-  #   def set_id(self, form):
-  #     set_id = Set.objects.get(name=form.__dict__['instance'])
-  #     return set_id
-  #   print('this is self', form.__dict__['instance'])
-  #   Set.objects.get(name=form.__dict__['instance'])
-  #   return super().form_valid(form)
-  #   success_url = f'/sets/{set_id}/flashcards/create/'
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
 

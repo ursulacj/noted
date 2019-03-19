@@ -10,57 +10,54 @@
 <!-- featureWrapper wraps around the featured sets section  -->
 <div class="featureWrapper">
     <div class="featureText">Featured Sets</div>
-
-        <div class="featureDeck1">
-                <div class="card">
-                    
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="/static/images/test.jpeg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        </div>
-                </div>
+    <div class="featureDeck1">
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="/static/images/test.jpeg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ set1.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
+                <p>Subject: {{ set1.subject }}</p>
+                <p>Description: {{ set1.description }}</p>
+            </div>
         </div>
-        <div class="featureDeck2">
-
-                <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="/static/images/test.jpeg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ set1.name }}<i class="material-icons right">close</i></span>
+            <p>{{ set1.description }}</p>
+        </div>
+    </div>
+    <div class="featureDeck2">
+        <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="/static/images/test.jpeg">
                 </div>
-        
-            </div>
-            <div class="featureDeck3">
-                <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="/static/images/test.jpeg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ set2.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set2.id %}">This is a link</a></p>
+                    <p>Subject: {{ set2.subject }}</p>
+                    <p>Description: {{ set2.description }}</p>
                 </div>
             </div>
-
-    </div> 
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ set2.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set2.description }}</p>
+            </div>
+    </div>
+    <div class="featureDeck3">
+        <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="/static/images/test.jpeg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ set3.name }}<i class="material-icons right">more_vert</i></span><p><a href="{% url 'show_set' set3.id %}">This is a link</a></p>
+                    <p>Subject: {{ set3.subject }}</p>
+                    <p>Description: {{ set3.description }}</p>
+                </div>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ set3.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set3.description }}</p>
+            </div>
+    </div>
 </div>
 
 
