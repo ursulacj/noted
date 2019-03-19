@@ -1,8 +1,11 @@
-M.AutoInit();
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    var navDrop = document.getElementsByClassName('.dropdown-trigger');
+    M.Dropdown.init(navDrop, {
+        hover: true,
+        coverTrigger: false,
+        closeOnClick: false
+    });
+
     var sideNav = document.querySelectorAll('.sidenav');
-    var navInstances = M.Sidenav.init(elems, options);
-});
+    M.Sidenav.init(sideNav, options);
+

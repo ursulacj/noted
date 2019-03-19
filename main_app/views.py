@@ -14,10 +14,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
 
-# Create your views here.
+
 
 def home(request):
   return render(request, 'home.html')
+
+def about(request):
+  return render(request, 'about.html')
 
 def contact_us(request):
   if request.method == 'GET':
@@ -37,6 +40,7 @@ def contact_us(request):
 
 def successView(request):
   return render(request, 'success.html', {'mainclass' : "thin"})
+
 
 def sets_index(request):
   sets = Set.objects.all()
@@ -71,6 +75,7 @@ def signup(request):
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
+  # redirect user to the flashcard creation page when 
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
 

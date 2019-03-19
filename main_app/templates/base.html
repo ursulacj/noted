@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" defer src="js/materialize.min.js"></script>
+
 </head>
 <body>
     <header class="navbar-fixed">
@@ -35,18 +35,21 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
                     <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
-                        <li><a href="{% url 'logout' %}" data-target="dropdown1" class="nav dropdown-trigger">Log Out<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="{% url 'logout' %}"class="nav">Log Out</a></li>
+                        <li class="dropdown-trigger" data-target="dropdown1"> My Account <i class="material-icons right">arrow_drop_down</i></li>
                     {% else %}
-                        <li><a href="" class="nav">About</a></li>
                         <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
                     {% endif %}
                     </ul>
             </div>
         </nav>
             <ul id="dropdown1" class="dropdown-content">
+                <li><a href="{% url 'about' %}" class="nav">About</a></li>
                 <li><a href="#!">My Account</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">My Groups</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Test Content</a></li>
             </ul>
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="#">Create</a></li>
@@ -71,5 +74,6 @@
     </div>
 </footer>
 <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html> 
