@@ -9,6 +9,7 @@ nav {
 
 .setSearch {
     height: 64px;
+    width: 50%;
     background-color: aliceblue;
     margin: 0 220px !important;
 }
@@ -80,7 +81,7 @@ footer.page-footer {
 
 .featureWrapper {
     display: grid;
-    margin-top: 7em;
+    margin-top: 14em;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
