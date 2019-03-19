@@ -19,7 +19,14 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 def home(request):
-  return render(request, 'home.html')
+  set1 = Set.objects.get(id=1)
+  set2 = Set.objects.get(id=2)
+  set3 = Set.objects.get(id=3)
+  return render(request, 'home.html', {
+    'set1' : set1,
+    'set2' : set2,
+    'set3' : set3,
+  } )
 
 def about(request):
   return render(request, 'about.html')
