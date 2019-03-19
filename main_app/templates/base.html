@@ -55,15 +55,23 @@
                 <li><a href="#">Create</a></li>
                 <li><a href="#">My Sets</a></li>
                 <li><a href="#">Login</a></li>
+                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
             </ul>
     </header>
-<main class="container center-align">
+<main class="container center-align {{ mainclass }}">
         {% block content %}
         {% endblock %}
 </main>
 
 <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2019 [ noTed. ] &nbsp;</div>
+    <div class="footer-copyright">All Rights Reserved, &copy; 2019 [ noTed. ] &nbsp;</div>
+    <div class="container">
+        <div class="row center-align grey-text text-lighten-3">
+                <ul class="grey-text text-lighten-3 footer-ul">
+                    <li> <a href="{% url 'contact_us' %}">Contact Us</a> </li>
+                </ul>
+        </div>
+    </div>
 </footer>
 <script src="{% static 'js/main.js' %}"></script>
 
