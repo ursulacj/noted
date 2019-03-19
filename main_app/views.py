@@ -7,11 +7,26 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 
 # Create your views here.
 
 def home(request):
   return render(request, 'home.html')
+
+def sets_index(request):
+  sets = Set.objects.all()
+  return render(request, 'sets/index.html', { 'sets': sets } )
+
+# def show_set(request, set_id):
+#   set = Set.objects.get(id=set_id)
+#   return render(request, 'sets/show.html', {'set': set } )
+
+def show_set(request, set_id):
+  set = Set.objects.get(id=set_id)
+  return render(request, 'sets/show.html', {
+    'set': set, 
+    })
 
 def signup(request):
   error_message = ''
@@ -24,7 +39,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('/sets/')
+      return redirect('index')
     else:
       error_message = 'Invalid credentials - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
@@ -32,27 +47,28 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-@login_required
-def sets_index(request):
-  sets = Set.objects.filter(user=request.user)
-  return render(request, 'sets/index.html', { 'sets': sets } )
-
-@login_required
-def show_set(request, set_id):
-  set = Set.objects.get(id=set_id)
-  return render(request, 'sets/show.html', {'set': set } )
-
-
-class SetCreate(LoginRequiredMixin, CreateView):
+class SetCreate(CreateView):
   model = Set
   fields = '__all__'
-  success_url = '/sets/'
+  # def set_id(self, form):
+  #   set_id = Set.objects.get(name=form.__dict__['instance'])
+  #   return set_id
+  # def form_valid(self, form):
+  #   def set_id(self, form):
+  #     set_id = Set.objects.get(name=form.__dict__['instance'])
+  #     return set_id
+  #   print('this is self', form.__dict__['instance'])
+  #   Set.objects.get(name=form.__dict__['instance'])
+  #   return super().form_valid(form)
+  #   success_url = f'/sets/{set_id}/flashcards/create/'
+  def get_success_url(self):
+    return reverse('create_flashcards', args=(self.object.id,))
 
-class SetUpdate(LoginRequiredMixin, UpdateView):
+class SetUpdate(UpdateView):
   model = Set
   fields = '__all__'
 
-class SetDelete(LoginRequiredMixin, DeleteView):
+class SetDelete(DeleteView):
   model = Set
   success_url = '/sets/'
 
@@ -60,10 +76,9 @@ class SetDelete(LoginRequiredMixin, DeleteView):
 def flashcards_index(request, set_id):
   pass
 
-@login_required
 def create_flashcards(request, set_id):
   set = Set.objects.get(id=set_id)
-  SetFlashcardFormSet = inlineformset_factory(Set, Flashcard,       fields=['question', 'answer'], extra=1, can_delete=True)
+  SetFlashcardFormSet = inlineformset_factory(Set, Flashcard, fields=['question', 'answer'], extra=1, can_delete=True)
 
   if request.method == 'POST':
     formset = SetFlashcardFormSet(request.POST, instance=set)
