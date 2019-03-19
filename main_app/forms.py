@@ -12,3 +12,5 @@ class ContactForm(forms.Form):
         self.fields['from_email'].label = "Your email:"
         self.fields['subject'].label = "Subject:"
         self.fields['message'].label = "What do you want to say?"
+
+
