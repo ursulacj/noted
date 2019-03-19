@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" defer src="js/materialize.min.js"></script>
+
 </head>
 <body>
     <header class="navbar-fixed">
@@ -22,7 +22,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 
                 <div class="left hide-on-med-and-down">
-                    <form>
+                    <form id="searchform" action="#" method="get" accept-charset="utf-8">
                         <div class="input-field">
                             <input id="search" type="search" required>
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -33,10 +33,13 @@
                 
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'about' %}" class="nav">About</a></li>
                     <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
                     <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
                     <li><a href="{% url 'groups_index' %}" class="nav">Groups</a></li>
-                        <li><a href="{% url 'logout' %}" data-target="dropdown1" class="nav dropdown-trigger">Log Out<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="{% url 'logout' %}"class="nav">Log Out</a></li>
+                        <li class="dropdown-trigger" data-target="dropdown1"> My Account <i class="material-icons right">arrow_drop_down</i></li>
+
                     {% else %}
                         <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
                     {% endif %}
@@ -44,25 +47,36 @@
             </div>
         </nav>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="{% url 'about' %}" class="nav">About</a></li>
+   
                 <li><a href="#!">My Account</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">My Groups</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Test Content</a></li>
             </ul>
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="#">Create</a></li>
                 <li><a href="#">My Sets</a></li>
                 <li><a href="#">Login</a></li>
+                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
             </ul>
     </header>
-<main class="container center-align">
+<main class="container center-align {{ mainclass }}">
         {% block content %}
         {% endblock %}
 </main>
 
 <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2019 [ noTed. ] &nbsp;</div>
+    <div class="footer-copyright">All Rights Reserved, &copy; 2019 [ noTed. ] &nbsp;</div>
+    <div class="container">
+        <div class="row center-align grey-text text-lighten-3">
+                <ul class="grey-text text-lighten-3 footer-ul">
+                    <li> <a href="{% url 'contact_us' %}">Contact Us</a> </li>
+                </ul>
+        </div>
+    </div>
 </footer>
 <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html> 
