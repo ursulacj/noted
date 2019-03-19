@@ -14,4 +14,5 @@ urlpatterns = [
   path('sets/<int:set_id>/flashcards/', views.flashcards_index, name='flashcards_index'),
   path('sets/<int:set_id>/flashcards/create/', views.create_flashcards, name='create_flashcards'),
   path('groups/', views.groups_index, name='groups_index'),
+  path('groups/create', views.GroupCreate.as_view(), name='create_group'),
 ]
