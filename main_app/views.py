@@ -85,3 +85,7 @@ def groups_index(request):
   return render(request, 'groups/index.html', {
     'groups': groups,
   })
+
+class GroupCreate(CreateView):
+  model = Group
+  fields = '__all__'
