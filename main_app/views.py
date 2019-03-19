@@ -88,6 +88,7 @@ class SetDelete(DeleteView):
   model = Set
   success_url = '/sets/'
 
+
 @login_required
 def flashcards_index(request, set_id):
   pass
