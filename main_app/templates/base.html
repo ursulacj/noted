@@ -35,6 +35,7 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
                     <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
+                    <li><a href="{% url 'groups_index' %}" class="nav">Groups</a></li>
                         <li><a href="{% url 'logout' %}" data-target="dropdown1" class="nav dropdown-trigger">Log Out<i class="material-icons right">arrow_drop_down</i></a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
