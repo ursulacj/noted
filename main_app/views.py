@@ -122,3 +122,13 @@ def groups_index(request):
   return render(request, 'groups/index.html', {
     'groups': groups,
   })
+
+class GroupCreate(CreateView):
+  model = Group
+  fields = '__all__'
+
+def show_group(request, group_id):
+  group = Group.objects.get(id=group_id)
+  return render(request, 'groups/show.html', {
+    'group': group, 
+  })
