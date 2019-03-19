@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Groups</h1>
-
+<a href="{% url 'create_group' %}" class="btn">Create a gang</a>
 {% for group in groups %} 
 
   <div class="card">
