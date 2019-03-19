@@ -38,13 +38,13 @@
                     <li><a href="{% url 'logout' %}"class="nav">Log Out</a></li>
                         <li class="dropdown-trigger" data-target="dropdown1"> My Account <i class="material-icons right">arrow_drop_down</i></li>
                     {% else %}
-                        <li><a href="" class="nav">About</a></li>
                         <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
                     {% endif %}
                     </ul>
             </div>
         </nav>
             <ul id="dropdown1" class="dropdown-content">
+                <li><a href="{% url 'about' %}" class="nav">About</a></li>
                 <li><a href="#!">My Account</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">My Groups</a></li>
