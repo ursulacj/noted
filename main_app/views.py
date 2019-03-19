@@ -22,6 +22,7 @@ def home(request):
   set1 = Set.objects.get(id=1)
   set2 = Set.objects.get(id=2)
   set3 = Set.objects.get(id=3)
+  
   return render(request, 'home.html', {
     'set1' : set1,
     'set2' : set2,
