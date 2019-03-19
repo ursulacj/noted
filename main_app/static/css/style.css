@@ -5,9 +5,13 @@ nav {
     color: black !important;
 }
 
+.setSearch {
+    height: 64px;
+    background-color: aliceblue;
+    margin: 0 220px !important;
+}
 
 .input-field {
-    margin: 0 220px !important;
     width: 100% !important;
 }
 
