@@ -18,6 +18,8 @@ urlpatterns = [
   path('groups/<int:group_id>/', views.show_group, name='show_group'),
   path('groups/<int:group_id>/assoc_user/<int:user_id>/', views.assoc_user, name='assoc_user'),
   path('groups/<int:group_id>/unassoc_user/<int:user_id>/', views.unassoc_user, name='unassoc_user'),
+  path('groups/<int:group_id>/assoc_set/<int:set_id>/', views.assoc_set, name='assoc_set'),
+  path('groups/<int:group_id>/unassoc_set/<int:set_id>/', views.unassoc_set, name='unassoc_set'),
   path('contact_us/', views.contact_us, name='contact_us'),
   path('success/', views.successView, name='success'),
 ]
