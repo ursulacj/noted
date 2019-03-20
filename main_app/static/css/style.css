@@ -1,13 +1,20 @@
 nav {
     background-color: white;
+    display: flex;
 }
+
 .brand-logo, li, i, .input-field, input, textarea, .dropdown-trigger, .nav{
     color: black !important;
 }
 
+.setSearch {
+    height: 64px;
+    width: 50%;
+    background-color: aliceblue;
+    margin: 0 220px !important;
+}
 
 .input-field {
-    margin: 0 220px !important;
     width: 100% !important;
 }
 
@@ -32,6 +39,7 @@ main {
 }
 
 footer.page-footer {
+    margin-top: 3em;
     padding-top: 0;
     text-align: right;
     background-color: rgb(31, 183, 210);
@@ -73,7 +81,7 @@ footer.page-footer {
 
 .featureWrapper {
     display: grid;
-    margin-top: 7em;
+    margin-top: 14em;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -106,3 +114,31 @@ footer.page-footer {
     max-width: 800px;
     margin: 0 auto;
 }
+
+.flashcards-slide {
+    display: flex;
+    visibility: visible;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: space-around;
+}
+
+.flip-btn {
+    /* padding: 16px; */
+    /* max-width: 60px; */
+    align-self: center;
+    /* text-align: center; */
+    /* font-size: 14px; */
+}
+
+.btn {
+    background-color: #FFC74B;
+}
+
+.noted-blue {
+    background-color: rgb(31, 183, 210);
+}
+
+/* .carousel {
+    margin: 0 auto
+} */
