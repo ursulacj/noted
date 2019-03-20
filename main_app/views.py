@@ -147,6 +147,6 @@ def show_group(request, group_id):
   })
 
 class GroupList(LoginRequiredMixin, ListView):
-  model = Group    
-
+  model = Group
+    
 
