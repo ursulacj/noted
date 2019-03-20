@@ -28,7 +28,7 @@ def home(request):
     'set1' : set1,
     'set2' : set2,
     'set3' : set3,
-  } )
+  })
 
 def about(request):
   return render(request, 'about.html')
@@ -51,7 +51,6 @@ def contact_us(request):
 
 def successView(request):
   return render(request, 'success.html', {'mainclass' : "thin"})
-
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
@@ -148,5 +147,11 @@ def show_group(request, group_id):
 
 class GroupList(LoginRequiredMixin, ListView):
   model = Group
-    
 
+def assoc_user(request, group_id, user_id):
+  Group.objects.get(id=group_id).users.add(user_id)
+  return redirect('show_group', group_id=group_id)
+
+def unassoc_user(request, group_id, user_id):
+  Group.objects.get(id=group_id).users.remove(user_id)
+  return redirect('show_group', group_id=group_id)
