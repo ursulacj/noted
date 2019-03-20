@@ -5,14 +5,6 @@ M.Dropdown.init(navDrop, {
     closeOnClick: false
 });
 
-
-var navDrop = document.getElementsByClassName('.dropdown-trigger');
-M.Dropdown.init(navDrop, {
-    hover: true,
-    coverTrigger: false,
-    closeOnClick: false
-});
-
 var sideNav = document.querySelectorAll('.sidenav');
 M.Sidenav.init(sideNav, {});
 
@@ -32,7 +24,4 @@ function initParallax(instances) {
         }
     }
 }
-
 initParallax(parallaxEls)
-
-
