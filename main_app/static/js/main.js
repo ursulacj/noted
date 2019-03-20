@@ -14,3 +14,6 @@ M.Carousel.init(carousel, {
     indicators: true,
     fullWidth: true
   });
+
+document.querySelectorAll('.parallax');
+M.Parallax.init(elems, {});
