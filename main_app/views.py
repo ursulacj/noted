@@ -2,12 +2,12 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 
 from .models import Set, Flashcard, Group
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 
-from .models import Set, Flashcard
 from django.forms import inlineformset_factory
 from .forms import ContactForm
 
@@ -140,9 +140,13 @@ class GroupCreate(CreateView):
 
 def show_group(request, group_id):
   group = Group.objects.get(id=group_id)
+  users_not_in_group = User.objects.exclude(id__in = group.users.all().values_list('id'))
   return render(request, 'groups/show.html', {
     'group': group, 
+    'users_not_in_group': users_not_in_group,
   })
 
 class GroupList(LoginRequiredMixin, ListView):
-  model = Group
+  model = Group    
+
+

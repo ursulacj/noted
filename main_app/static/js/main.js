@@ -35,4 +35,16 @@ function initParallax(instances) {
 
 initParallax(parallaxEls)
 
+var navDrop = document.getElementsByClassName('.dropdown-trigger');
+M.Dropdown.init(navDrop, {
+    hover: true,
+    coverTrigger: false,
+    closeOnClick: false
+});
+
+let carousel = document.querySelector('.carousel');
+M.Carousel.init(carousel, {
+    indicators: true,
+    fullWidth: true
+});
 
