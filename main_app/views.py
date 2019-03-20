@@ -5,6 +5,7 @@ from .models import Set, Flashcard, Group
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 
 from .models import Set, Flashcard
 from django.forms import inlineformset_factory
@@ -53,15 +54,21 @@ def successView(request):
 
 
 def sets_index(request):
-  sets = Set.objects.all()
-  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin" } )
+  sets = Set.objects.filter(user = request.user)
+  groups = Group.objects.filter(users = request.user)
+  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
+
+@login_required
+def unassoc_group(request, user_id, group_id):
+  Group.objects.get(id=user_id).groups.remove(group_id)
+  return redirect('sets/index.html')
 
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.flashcard_set.all()
   print('this is set', set)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'mainclass' : "thin"
+    'set': set, 'flashcards' : flashcards, 'mainclass' : "thin-body"
     })
 
 def signup(request):
@@ -83,7 +90,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-
+#Sets
 class SetCreate(CreateView):
   model = Set
   fields = '__all__'
@@ -99,7 +106,7 @@ class SetDelete(DeleteView):
   model = Set
   success_url = '/sets/'
 
-
+#Flashcards
 @login_required
 def flashcards_index(request, set_id):
   pass
@@ -120,6 +127,7 @@ def create_flashcards(request, set_id):
     'form': formset,
   })
 
+#Groups
 def groups_index(request):
   groups = Group.objects.all()
   return render(request, 'groups/index.html', {
@@ -135,3 +143,6 @@ def show_group(request, group_id):
   return render(request, 'groups/show.html', {
     'group': group, 
   })
+
+class GroupList(LoginRequiredMixin, ListView):
+  model = Group
