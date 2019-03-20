@@ -34,8 +34,26 @@
     <a href="{% url 'show_set' set.id %}">
         <p>{{ set }}</p>
     </a>
+    <form action="{% url 'unassoc_set' group.id set.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">X</button>
+    </form>
     {% empty %}
         <p>This group has no sets</p>
+    {% endfor %}
+</div>
+<div class="card">
+    <span class="card-title">Add sets to this group</span>
+    {% for set in sets_not_in_group %}
+    <a href="{% url 'show_set' set.id %}">
+        <p>{{ set }}</p>
+    </a>
+    <form action="{% url 'assoc_set' group.id set.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">+</button>
+    </form>
+    {% empty %}
+        <p>This group has all the sets</p>
     {% endfor %}
 </div>
 
