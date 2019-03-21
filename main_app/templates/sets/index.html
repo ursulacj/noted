@@ -1,42 +1,37 @@
 {% extends 'base.html' %}
-{% load listutils %}
 {% block content %}
 
-
-<!-- <div class="dash-wrapper"> -->
-    <div class="user-dash sets-dash">
-        <h3>My Sets</h3>
-        {% for set in sets | partition:"2"| first %} 
-        <a href="{% url 'show_set' set.id %}">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ set.name }}</span>
-                    <p>Subject: {{ set.subject }}</p>
-                    <p>Description: {{ set.description }}</p>
-                </div>
+<h3>My Sets</h3>
+{% for set in sets %} 
+    <a href="{% url 'show_set' set.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ set.name }}</span>
+                <p>Subject: {{ set.subject }}</p>
+                <p>Description: {{ set.description }}</p>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
 {% endfor %}
-<!-- <div class="user-dash groups-dash"> -->
-        <h3>My Groups</h3>
-        {% if groups.count %}
-            {% for group in groups |partition:"2"| last %}
-                <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ group.name }}</span>
-                </div>
-                <div class="card-action">
-                    <form action="{% url 'unassoc_group' user.id group.id %}" method="post">
-                        {% csrf_token %}
-                    <button type="submit" class="btn">Leave Group</button>
-                    </form>
-                </div>
-            </div>
-            {% endfor %}
-        {% else %}
-        <h5>You haven't joined a Gang</h5>
-        {% endif %}
-    <!-- </div> -->
-<!-- </div> -->
-{% endblock %}
+<h3>My Groups</h3>
+{% if groups.count %}
+      {% for group in groups %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span>{{ group.name }}</span>
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'unassoc_group' user.id group.id %}" method="post">
+                {% csrf_token %}
+              <button type="submit" class="btn">Leave Group</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>You haven't joined a Gang</h5>
+    {% endif %}
+
+{% endblock %} 
