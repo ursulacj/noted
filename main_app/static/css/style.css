@@ -64,7 +64,7 @@ footer.page-footer {
 }
 
 .homeImage{
-    background-image: url("/static/images/test.jpeg");
+    background-image: url("https://fsmedia.imgix.net/d0/6f/00/84/8071/4f40/9480/21c19586d3ca.jpeg");
     background-size: cover;
     opacity: .5;
     grid-row: 1 / 3;
