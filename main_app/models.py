@@ -11,7 +11,6 @@ class Set(models.Model):
   name = models.CharField(max_length=200)
   subject = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
-  is_public = models.BooleanField(default=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def get_absolute_url(self):
@@ -39,7 +38,6 @@ class Set(models.Model):
 
 class Group(models.Model):
   name = models.CharField(max_length=200)
-  is_public = models.BooleanField(default=True)
   sets = models.ManyToManyField(Set)
   users = models.ManyToManyField(User)
 

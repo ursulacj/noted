@@ -12,24 +12,4 @@
         </div>
     </a>
 {% endfor %}
-<h3>My Groups</h3>
-{% if groups.count %}
-      {% for group in groups %}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">
-              <span>{{ group.name }}</span>
-            </span>
-          </div>
-          <div class="card-action">
-            <form action="{% url 'unassoc_group' user.id group.id %}" method="post">
-                {% csrf_token %}
-              <button type="submit" class="btn">Leave Group</button>
-            </form>
-          </div>
-        </div>
-      {% endfor %}
-    {% else %}
-      <h5>You haven't joined a Gang</h5>
-    {% endif %}
 {% endblock %} 
