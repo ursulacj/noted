@@ -96,7 +96,7 @@ class SetCreate(CreateView):
 
 class SetUpdate(UpdateView):
   model = Set
-  fields = '__all__'
+  fields = ['name', 'subject', 'description']
 
 class SetDelete(DeleteView):
   model = Set
