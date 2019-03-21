@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+import random
 
 from .models import Set, Flashcard, Group
 from django.contrib.auth.models import User
@@ -22,14 +23,9 @@ from django.core.mail import send_mail, BadHeaderError
 from django.contrib.postgres.search import SearchVector
 
 def home(request):
-  set1 = Set.objects.get(id=1)
-  set2 = Set.objects.get(id=2)
-  set3 = Set.objects.get(id=3)
-  
+  sets =  Set.objects.all()[0:3]
   return render(request, 'home.html', {
-    'set1' : set1,
-    'set2' : set2,
-    'set3' : set3,
+    'sets' : sets,
   })
 
 def about(request):
@@ -56,14 +52,16 @@ def successView(request):
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
-  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin-body" } )
+
+  return render(request, 'sets/index.html', { 
+    'sets': sets,
+    'mainclass' : "thin-body" } )
 
 
 def my_account(request):
   sets = Set.objects.filter(user = request.user)
   groups = Group.objects.filter(users = request.user)
   return render(request, 'my_account.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
-
 
 @login_required
 def unassoc_group(request, user_id, group_id):
@@ -72,9 +70,13 @@ def unassoc_group(request, user_id, group_id):
 
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
-  flashcards = set.flashcard_set.all()
+  flashcards = set.get_flashcards()
+  total = len(flashcards)
+  if request.GET.get('random') == 'random':
+    flashcards = set.shuffle_cards()
+  print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'mainclass' : "thin-body"
+    'set': set, 'flashcards' : flashcards, 'total' : total
     })
 
 def signup(request):
@@ -99,14 +101,20 @@ def signup(request):
 #Sets
 class SetCreate(CreateView):
   model = Set
-  fields = '__all__'
+  fields = ['name', 'subject', 'description']
+
+  def form_valid(self, form):
+    # Assign the logged in user to the set
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+    
   # redirect user to the flashcard creation page when a set is created
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
 
 class SetUpdate(UpdateView):
   model = Set
-  fields = '__all__'
+  fields = ['name', 'subject', 'description']
 
 class SetDelete(DeleteView):
   model = Set
@@ -175,14 +183,18 @@ def unassoc_set(request, group_id, set_id):
   return redirect('show_group', group_id=group_id)
 
 # Search
-def search_sets(request):
+def search(request):
   query = request.GET.get('search_query')
 
-  search_vectors = Set.objects.annotate(search=SearchVector('name', 'subject', 'description'))
+  # search sets for query
+  sets_search_vectors = Set.objects.annotate(search=SearchVector('name', 'subject', 'description'))
+  sets_search_results = sets_search_vectors.filter(search=query)
+  # search groups for query
+  groups_search_vectors = Group.objects.annotate(search=SearchVector('name'))
+  groups_search_results = groups_search_vectors.filter(search=query)
 
-  search_results = search_vectors.filter(search=query)
-
-  return render(request, 'search/sets.html', {
+  return render(request, 'search/index.html', {
     'query': query,
-    'search_results': search_results,
+    'sets': sets_search_results,
+    'groups': groups_search_results,
   })

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.forms import modelformset_factory, inlineformset_factory
+import random
 
 from django.contrib.auth.models import User
 
@@ -10,7 +11,6 @@ class Set(models.Model):
   name = models.CharField(max_length=200)
   subject = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
-  is_public = models.BooleanField(default=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def get_absolute_url(self):
@@ -19,9 +19,25 @@ class Set(models.Model):
   def __str__(self):
     return self.name
 
+  def shuffle_cards(self):
+    flashcards = self.flashcard_set.all()
+    cards = []
+    for card in flashcards:
+      cards.append((card.question, card.answer, card.id))
+      random.shuffle(cards)
+    return cards
+
+  def get_flashcards(self):
+    flashcards = self.flashcard_set.all()
+    cards = []
+    for card in flashcards:
+      cards.append((card.question, card.answer, card.id))
+    return cards
+
+
+
 class Group(models.Model):
   name = models.CharField(max_length=200)
-  is_public = models.BooleanField(default=True)
   sets = models.ManyToManyField(Set)
   users = models.ManyToManyField(User)
 
