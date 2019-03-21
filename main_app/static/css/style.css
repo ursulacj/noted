@@ -6,6 +6,12 @@ nav {
     color: black !important;
 }
 
+.footer  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* .parallax-container .parallax img {
     opacity: 100;
 } */
