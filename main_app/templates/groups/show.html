@@ -44,6 +44,11 @@
 </div>
 <div class="card">
     <span class="card-title">Add sets to this group</span>
+    <form action="/search/sets/" method="get">
+        <label for="search_query"></label>
+        <input name="search_query" type="text">
+        <input type="submit" value="Search">
+    </form>
     {% for set in sets_not_in_group %}
     <a href="{% url 'show_set' set.id %}">
         <p>{{ set }}</p>
