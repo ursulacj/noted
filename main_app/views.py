@@ -89,7 +89,13 @@ def signup(request):
 #Sets
 class SetCreate(CreateView):
   model = Set
-  fields = '__all__'
+  fields = ['name', 'subject', 'description']
+
+  def form_valid(self, form):
+    # Assign the logged in user to the set
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+    
   # redirect user to the flashcard creation page when a set is created
   def get_success_url(self):
     return reverse('create_flashcards', args=(self.object.id,))
