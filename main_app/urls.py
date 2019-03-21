@@ -24,5 +24,5 @@ urlpatterns = [
   path('success/', views.successView, name='success'),
   path('sets/<int:user_id>/unassoc_group/<int:group_id>/', views.unassoc_group, name='unassoc_group'),
   # search paths
-  path('search/sets/', views.search_sets, name='search_sets' )
+  path('search/', views.search, name='search' )
 ]
