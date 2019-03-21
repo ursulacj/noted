@@ -55,8 +55,10 @@ def successView(request):
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
-  groups = Group.objects.filter(users = request.user)
-  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
+  return render(request, 'sets/index.html', { 
+    'sets': sets, 
+    'mainclass' : "thin-body",
+    })
 
 @login_required
 def unassoc_group(request, user_id, group_id):
