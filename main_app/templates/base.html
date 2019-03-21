@@ -34,32 +34,32 @@
                 
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'about' %}" class="nav">About</a></li>
-                    <li><a href="{% url 'create_set' %}" class="nav">Create</a></li>
-                    <li><a href="{% url 'sets_index' %}" class="nav">My Sets</a></li>
-                    <li><a href="{% url 'groups_index' %}" class="nav">Groups</a></li>
-                    <li><a href="{% url 'logout' %}"class="nav">Log Out</a></li>
-                        <li class="dropdown-trigger" data-target="dropdown1"> My Account <i class="material-icons right">arrow_drop_down</i></li>
+                    <li><a href="{% url 'create_set' %}" class="nav waves-effect">Create</a></li>
+                    <li><a href="{% url 'groups_index' %}" class="nav waves-effect">Groups</a></li>
+                    <li><a href="{% url 'logout' %}"class="nav waves-effect">Log Out</a></li>
+                    <li><a href="{% url 'my_account' %}"class="nav waves-effect">My Account</a></li>
 
                     {% else %}
-                        <li><a href="{% url 'login' %}" class="nav">Log In</a></li>
+                        <li><a href="{% url 'login' %}" class="nav waves-effect">Log In</a></li>
                     {% endif %}
                     </ul>
             </div>
         </nav>
-            <ul id="dropdown1" class="dropdown-content">
-
-                <li><a href="#!">My Account</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">My Groups</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">Test Content</a></li>
-            </ul>
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="#">Create</a></li>
-                <li><a href="#">My Sets</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'create_set' %}" class="waves-effect">Create</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="{% url 'sets_index' %}" class="waves-effect">My Sets</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="{% url 'groups_index' %}" class="waves-effect">Groups</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="{% url 'logout' %}" class="waves-effect">Log Out</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="{% url 'my_account' %}" class="waves-effect">My Account</a></li>
+
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="waves-effect">Log In</a></li>
+                {% endif %}
             </ul>
     </header>
 <main class="container center-align {{ mainclass }}">

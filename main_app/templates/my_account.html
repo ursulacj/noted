@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row accountTabs hide-on-med-and-down">
+  <ul class="">
+      <li><a href="{% url 'sets_index' %}" class="waves-effect">My Sets</a></li>
+    <li class="waves-effect">My Groups</li>
+    <li class="waves-effect">Test Test</li>
+  </ul>
+</div>
+
+<table>
+  <tr>
+    <th><h3><a href="{% url 'sets_index' %}"> My Sets </a></h3></th>
+    <th><h3><a href="{% url 'groups_index' %}"> My Groups </a></h3></th>
+  </tr>
+  <tr>
+    <td>
+        {% for set in sets %} 
+        <a href="{% url 'show_set' set.id %}">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ set.name }}</span>
+                    <p>Subject: {{ set.subject }}</p>
+                    <p>Description: {{ set.description }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </td>
+    <td>
+      {% if groups.count %}
+      {% for group in groups %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span>{{ group.name }}</span>
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'unassoc_group' user.id group.id %}" method="post">
+                {% csrf_token %}
+              <button type="submit" class="btn">Leave Group</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h5>You haven't joined any Gangs</h5>
+      {% endif %}
+    </td>
+
+  </tr>
+</table>
+
+{% endblock %} 

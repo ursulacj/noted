@@ -1,10 +1,3 @@
-var navDrop = document.getElementsByClassName('.dropdown-trigger');
-M.Dropdown.init(navDrop, {
-    hover: true,
-    coverTrigger: false,
-    closeOnClick: false
-});
-
 var sideNav = document.querySelectorAll('.sidenav');
 M.Sidenav.init(sideNav, {});
 
@@ -31,7 +24,7 @@ initParallax(parallaxEls);
 var tooltip = document.querySelector('.tooltipped');
 function initTooltip(tooltip) {
     M.Tooltip.init(tooltip, { 'position' : 'bottom'});
-  };
+};
 initTooltip(tooltip);
 
 

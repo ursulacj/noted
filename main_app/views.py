@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 
+
 from django.forms import inlineformset_factory
 from .forms import ContactForm
 
@@ -51,10 +52,16 @@ def successView(request):
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
+
   return render(request, 'sets/index.html', { 
-    'sets': sets, 
-    'mainclass' : "thin-body",
-    })
+    'sets': sets,
+    'mainclass' : "thin-body" } )
+
+
+def my_account(request):
+  sets = Set.objects.filter(user = request.user)
+  groups = Group.objects.filter(users = request.user)
+  return render(request, 'my_account.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
 
 @login_required
 def unassoc_group(request, user_id, group_id):

@@ -12,6 +12,11 @@ urlpatterns = [
   path('sets/<int:pk>/delete/', views.SetDelete.as_view(), name='delete_set'),
   path('accounts/', include('django.contrib.auth.urls')),
   path('accounts/signup', views.signup, name='signup'),
+
+
+  path('accounts/my_account', views.my_account, name='my_account'),
+
+  
   path('sets/<int:set_id>/flashcards/', views.flashcards_index, name='flashcards_index'),
   path('sets/<int:set_id>/flashcards/create/', views.create_flashcards, name='create_flashcards'),
   # group paths
