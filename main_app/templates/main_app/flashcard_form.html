@@ -4,8 +4,8 @@
 
 {% for field in filter.form.tags %}
 <input type="checkbox" id="{{ field.id_for_label }}"
-       name="{{ field.html_name }}"
-       {% if field.value %}checked{% endif %}>
+        name="{{ field.html_name }}"
+        {% if field.value %}checked{% endif %}>
 <label for="{{ field.id_for_label }}">{{ field.value }}</label>
 {% endfor %}
 <h1>Add Flashcards</h1>
@@ -15,7 +15,7 @@
     {{ form.as_table }}
     </table>
   <input type="submit" value="Add or Edit" class="btn">
+  <a class="btn" href="/sets/{{ set_id }}">View Set</a>
 </form>
-<a href="/sets/"></a>
 
 {% endblock %}
