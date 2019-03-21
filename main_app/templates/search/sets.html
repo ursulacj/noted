@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Search results for:</h3>
+<h4 class="yellow-text">{{ query }}</h4>
+
+{% for set in search_results %}
+<a href="{% url 'show_set' set.id %}">
+  <p>
+    {{set.name}}
+  </p>
+</a>
+{% empty %}
+<p>Sorry you need to get better at searching. Look into your soul!</p>
+{% endfor %}
+
+{% endblock %}
