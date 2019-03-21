@@ -4,11 +4,14 @@
 <h4 class="yellow-text">{{ query }}</h4>
 
 {% for set in search_results %}
-<a href="{% url 'show_set' set.id %}">
-  <p>
-    {{set.name}}
-  </p>
-</a>
+
+<div class="card horizontal feature">
+    <div class="card-stacked">
+        <div class="card-action">
+          <a href="{% url 'show_set' set.id %}">{{set.name}}</a>
+        </div>
+    </div>
+</div>
 {% empty %}
 <p>Sorry you need to get better at searching. Look into your soul!</p>
 {% endfor %}

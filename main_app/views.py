@@ -8,6 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 
+
 from django.forms import inlineformset_factory
 from .forms import ContactForm
 
@@ -54,6 +55,11 @@ def successView(request):
   return render(request, 'success.html', {'mainclass' : "thin"})
 
 def sets_index(request):
+  sets = Set.objects.filter(user = request.user)
+  groups = Group.objects.filter(users = request.user)
+  return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
+
+def my_account(request):
   sets = Set.objects.filter(user = request.user)
   groups = Group.objects.filter(users = request.user)
   return render(request, 'sets/index.html', { 'sets': sets, 'mainclass' : "thin-body", 'groups' : groups } )
