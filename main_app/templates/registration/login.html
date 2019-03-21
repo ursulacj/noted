@@ -4,10 +4,12 @@
 <h1>Log In</h1>
 
 <!-- Add the login form -->
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
+<div class = "thin-body">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</div>
 {% endblock %}
