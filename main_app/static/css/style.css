@@ -6,6 +6,12 @@ nav {
     color: black !important;
 }
 
+.footer  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* .parallax-container .parallax img {
     opacity: 100;
 } */
@@ -31,6 +37,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -52,19 +59,20 @@ footer.page-footer {
     .container {
         width: 100% !important;
     }
-    .logoText {
-        margin: 0 60px;
-    }    
+    .logoText{
+    margin: 0 72px;
+    font-weight: bold;
+    }   
 }
 
 .home1Wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 17fr .5fr;
+    grid-template-rows: 12fr .5fr;
 }
 
 .homeImage{
-    background-image: url("https://fsmedia.imgix.net/d0/6f/00/84/8071/4f40/9480/21c19586d3ca.jpeg");
+    background-image: url("/static/images/bokeh.jpg");
     background-size: cover;
     opacity: .5;
     grid-row: 1 / 3;
@@ -75,22 +83,31 @@ footer.page-footer {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
     margin-bottom: -25px;
-    margin-left: 20px;
-    width: 100%;
+    margin-left: 92px;
+    width: 70%;
+    height: 204%;
+    font-size: larger;
+    line-height: 61px;
+    text-align: center;
     border-radius: 10px;
     background-color: rgb(31, 183, 210);
     color: white;
 }
+.signUp:hover {
+    background-color: #FFC74B;
+}
 
-.featureWrapper {
+.featureWrapper, .missionWrapper, .aboutWrapper, .goonsWrapper{
+    margin: 6em 0 8em 0;
+}
+
+.featureCards, .goonSquadWrapper {
     display: grid;
-    margin-top: 14em;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.featureDeck1, .featureDeck2, .featureDeck3 {
-    grid-row: 2 / 3;
-    margin-top: 4em;
+.featureCards {
+    padding: 0 2em;
 }
 
 .featureText {
@@ -100,17 +117,32 @@ footer.page-footer {
     font-size: -webkit-xxx-large;
 }
 
-.featureDeck1 {
-    grid-column: 1 / 2;
+.featureDeck1, .featureDeck2, .featureDeck3 {
+    margin: 50px 20px 20px 0;
+    grid-row: 2 / 3;
+}
+
+.card.horizontal.feature {
     margin: 50px 20px 20px 0;
 }
-.featureDeck2 {
-    grid-column: 2 / 3;
-    margin: 50px 20px 20px 0;
+
+.missionWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: aliceblue;
 }
-.featureDeck3 {
-    grid-column: 3 / 4;
-    margin: 50px 20px 20px 0;
+
+.missionImage {
+    width: 22em;
+    height: 27em;
+}
+
+.textSection {
+    width: 22em;
+}
+
+.homepageMissionText {
+    grid-column: 1 / 3;
 }
 
 .thin-body {

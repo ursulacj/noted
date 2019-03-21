@@ -4,57 +4,179 @@
 <!-- "home1Wrapper" wraps around the home image section -->
 <div class="home1Wrapper">
     <div class="homeImage"></div>
-    <a class="waves-effect waves-light btn-large signUp" href="{% url 'signup' %}">Sign Up For Free!</a>
+    <a class="waves-effect waves-light signUp" href="{% url 'signup' %}">Sign Up For Free!</a>
 </div>
 
 <!-- featureWrapper wraps around the featured sets section  -->
 <div class="featureWrapper">
     <div class="featureText">Featured Sets</div>
-    
-    <div class="card featureDeck1">
-        <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="/static/images/test.jpeg">
-        </div>
-    <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4 left">{{ set1.name }}</span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
-    </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4 left-align">{{ set1.name }}<i class="material-icons right">close</i></span>
-            <p>{{ set1.subject }}</p>
-            <p>{{ set1.description }}</p>
-            <a href="{% url 'show_set' set1.id %}" class="bottom-align">See Flashcards!</a>
-        </div>
-    </div>
-    <div class="featureDeck2 card">
-        <div class="card-image waves-effect waves-block waves-light">
+
+    <!-- featureCards wrap around the cards -->
+    <div class="featureCards"> 
+        <div class="card featureDeck1">
+            <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="/static/images/test.jpeg">
             </div>
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4 left">{{ set2.name }}</span><p><a href="{% url 'show_set' set2.id %}">See Flashcards!</a></p>
+            <span class="card-title activator grey-text text-darken-4 left">{{ set1.name }}</span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
         </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4 left-align">{{ set2.name }}<i class="material-icons right">close</i></span>
-            <p>{{ set2.subject }}</p>
-            <p>{{ set2.description }}</p>
-            <a href="{% url 'show_set' set2.id %}" class="bottom-align">See Flashcards!</a>
-        </div>
-    </div>
-    <div class="featureDeck3 card">
-        <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/static/images/test.jpeg">
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4 left-align">{{ set1.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set1.subject }}</p>
+                <p>{{ set1.description }}</p>
+                <a href="{% url 'show_set' set1.id %}" class="bottom-align">See Flashcards!</a>
             </div>
-        <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4 left">{{ set3.name }}<i class="material-icons right"></i></span><p><a href="{% url 'show_set' set3.id %}">See Flashcards!</a></p>
         </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4 left-align">{{ set3.name }}<i class="material-icons right">close</i></span>
-            <p>{{ set3.subject }}</p>
-            <p>{{ set3.description }}</p>
-            <br>
-            <a href="{% url 'show_set' set3.id %}" class="bottom-align">Go to the Flashcards!</a>
+        <div class="featureDeck2 card">
+            <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="/static/images/test.jpeg">
+                </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4 left">{{ set2.name }}</span><p><a href="{% url 'show_set' set2.id %}">See Flashcards!</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4 left-align">{{ set2.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set2.subject }}</p>
+                <p>{{ set2.description }}</p>
+                <a href="{% url 'show_set' set2.id %}" class="bottom-align">See Flashcards!</a>
+            </div>
         </div>
+        <div class="featureDeck3 card">
+            <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="/static/images/test.jpeg">
+                </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4 left">{{ set3.name }}<i class="material-icons right"></i></span><p><a href="{% url 'show_set' set3.id %}">See Flashcards!</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4 left-align">{{ set3.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set3.subject }}</p>
+                <p>{{ set3.description }}</p>
+                <br>
+                <a href="{% url 'show_set' set3.id %}" class="bottom-align">Go to the Flashcards!</a>
+            </div>
+        </div>
+
+
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
+<div class = "missionWrapper">
+    <div class="missionSection Image1"><img src="/static/images/grandma.jpg" alt="grandma" class="missionImage Image1"></div>
+    <div class="missionSection textSection text1">
+        <div class="textbox">
+            <h1>Lorem Ipsum</h1>
+            <p>You teach what you have to learn. it is not necessary to have achieved perfection to speak of perfection. it is not necessary to have achieved mastery to speak of mastery. it is not necessary to have achieved the highest level of evolution to speak of the highest level of evolution. seek only to be genuine. strive to be sincere. goodbyes always make my throat hurt . . .</p>
+        </div>
+    </div>
+    <div class="missionSection Image2"><img src="/static/images/baby.jpg" alt="baby" class="missionImage Image2"></div>
+    <div class="missionSection textSection text2">
+        <div class="textbox">
+            <h1>Lorem Ipsum</h1>
+            <p>i need more hellos. i care not for heaven and i fear not hell / if i have but the kisses of his proud, young mouth.... and another thing. love is a temporary madness, it erupts like volcanoes and then subsides. and when it subsides you have to make a decision. you have to work out whether your roots have so entwined together that it is inconceivable that you should ever part. because that is what love is. love is not breathlessness, it is not excitement, it is not the promulgation of promises of eternal passion. . . . that is just being </p>
+        </div>
+    </div>
+    <div class="homepageMissionText">
+        <div class="textbox">
+                <h1>Lorem Ipsum</h1>
+                <p>Everything has beauty, but not everyone sees it. when you get into a tight place and it seems you can't go on, hold on, for that's just the place and the time that the tide will turn. i liked how sterile my room was, cleansed of all the emotions that have ever been felt there, all the fights and lovemaking and plain rest of weary travelers wiped clean, leaving no mark on the perfectly made bed. </p>
+        </div>
+    </div>
+
+</div>
+
+<div class = "aboutWrapper">
+    <h2>Feature Section</h2>
+    <h4>Lorem Ipsum</h4>
+    <p>Call it fate, call it luck, call it karma. i believe everything happens for a reason. when the morning's freshness has been replaced by the weariness of midday, when the leg muscles give under the strain, the climb seems endless, and suddenly nothing will go quite as you wish - it is then that you must not hesitate. my religion is very simple. my religion is kindness. </p>
+</div>
+
+<div class="goonsWrapper">
+    <h2>Meet the Goons</h2>
+
+    <div class="goonSquadWrapper">
+        <div class="team card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="static/images/dude.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Ursula Cedillo-Johnson<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+        </div>
+
+        <div class="team card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="static/images/dude.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Son Truong<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+        </div>
+
+        <div class="team card">
+            <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="static/images/dude.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Anna Peterson<i class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
