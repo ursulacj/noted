@@ -154,6 +154,21 @@ footer.page-footer {
     background-color: #E51600;
 }
 
+.dash-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.user-dash {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    max-width: 50%;
+}
+
+
 .footer-ul {
     font-size: 1.2em;
     display: flex;
