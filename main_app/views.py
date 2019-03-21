@@ -44,10 +44,10 @@ def contact_us(request):
       except BadHeaderError:
         return HttpResponse('Invalid header found.')
       return redirect('success')
-  return render(request, 'contact_us.html', {'form' : form, 'mainclass' : "thin"})
+  return render(request, 'contact_us.html', {'form' : form, 'mainclass' : "thin-body"})
 
 def successView(request):
-  return render(request, 'success.html', {'mainclass' : "thin"})
+  return render(request, 'success.html', {'mainclass' : "thin-body"})
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
