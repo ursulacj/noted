@@ -35,7 +35,6 @@
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'create_set' %}" class="nav waves-effect">Create</a></li>
-                    <li><a href="{% url 'sets_index' %}" class="nav waves-effect">My Sets</a></li>
                     <li><a href="{% url 'groups_index' %}" class="nav waves-effect">Groups</a></li>
                     <li><a href="{% url 'logout' %}"class="nav waves-effect">Log Out</a></li>
                     <li><a href="{% url 'my_account' %}"class="nav waves-effect">My Account</a></li>
