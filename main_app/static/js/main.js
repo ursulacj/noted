@@ -6,15 +6,14 @@ M.Dropdown.init(navDrop, {
 });
 
 var sideNav = document.querySelectorAll('.sidenav');
-M.Sidenav.init(sideNav);
+M.Sidenav.init(sideNav, {});
 
 
-   
 let carousel = document.querySelector('.carousel');
 M.Carousel.init(carousel, {
     indicators: true,
     fullWidth: true
-  });
+});
 
 // initialize the parallax elements
 var parallaxEls = document.querySelectorAll('.parallax');
@@ -25,6 +24,4 @@ function initParallax(instances) {
         }
     }
 }
-
 initParallax(parallaxEls)
-
