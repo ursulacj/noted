@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h3>My Sets</h3>
 {% for set in sets %} 
     <a href="{% url 'show_set' set.id %}">
@@ -12,8 +13,10 @@
         </div>
     </a>
 {% endfor %}
+
 <h3>My Groups</h3>
-{% if groups.count %}
+
+  {% if groups.count %}
       {% for group in groups %}
         <div class="card">
           <div class="card-content">
@@ -30,6 +33,7 @@
         </div>
       {% endfor %}
     {% else %}
-      <h5>You haven't joined a Gang</h5>
-    {% endif %}
+      <h5>You haven't joined any Gangs</h5>
+  {% endif %}
+
 {% endblock %} 
