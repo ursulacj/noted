@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <h3>My Sets</h3>
 {% for set in sets %} 
     <a href="{% url 'show_set' set.id %}">
@@ -33,5 +32,4 @@
     {% else %}
       <h5>You haven't joined a Gang</h5>
     {% endif %}
-
 {% endblock %} 
