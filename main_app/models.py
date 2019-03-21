@@ -27,6 +27,8 @@ class Group(models.Model):
 
   def __str__(self):
     return self.name
+  def get_absolute_url(self):
+    return reverse('sets_index')
 
 class Flashcard(models.Model):
   question = models.TextField(max_length=500)
