@@ -34,7 +34,7 @@ def home(request):
     'set1' : set1,
     'set2' : set2,
     'set3' : set3,
-  } )
+  })
 
 def about(request):
   return render(request, 'about.html')
@@ -57,7 +57,6 @@ def contact_us(request):
 
 def successView(request):
   return render(request, 'success.html', {'mainclass' : "thin"})
-
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
@@ -147,10 +146,29 @@ class GroupCreate(CreateView):
 def show_group(request, group_id):
   group = Group.objects.get(id=group_id)
   users_not_in_group = User.objects.exclude(id__in = group.users.all().values_list('id'))
+  sets_not_in_group = Set.objects.exclude(id__in = group.sets.all().values_list('id'))
   return render(request, 'groups/show.html', {
     'group': group, 
     'users_not_in_group': users_not_in_group,
+    'sets_not_in_group': sets_not_in_group,
   })
 
 class GroupList(LoginRequiredMixin, ListView):
   model = Group
+
+def assoc_user(request, group_id, user_id):
+  Group.objects.get(id=group_id).users.add(user_id)
+  return redirect('show_group', group_id=group_id)
+
+def unassoc_user(request, group_id, user_id):
+  Group.objects.get(id=group_id).users.remove(user_id)
+  return redirect('show_group', group_id=group_id)
+
+def assoc_set(request, group_id, set_id):
+  Group.objects.get(id=group_id).sets.add(set_id)
+  return redirect('show_group', group_id=group_id)
+
+def unassoc_set(request, group_id, set_id):
+  Group.objects.get(id=group_id).sets.remove(set_id)
+  return redirect('show_group', group_id=group_id)
+
