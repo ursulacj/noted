@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Log In</h1>
-
+<div class="thin-body">
 <!-- Add the login form -->
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
@@ -10,4 +10,5 @@
     <input type="submit" class="btn" value="login">
     <input type="hidden" name="next" value="{{ next }}">
 </form>
+</div>
 {% endblock %}

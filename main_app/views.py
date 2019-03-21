@@ -18,6 +18,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
 
+from math import ceil
+
+from django import template
+ 
+register = template.Library()
+
 
 def home(request):
   set1 = Set.objects.get(id=1)
@@ -165,3 +171,4 @@ def assoc_set(request, group_id, set_id):
 def unassoc_set(request, group_id, set_id):
   Group.objects.get(id=group_id).sets.remove(set_id)
   return redirect('show_group', group_id=group_id)
+
