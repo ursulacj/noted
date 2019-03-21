@@ -18,6 +18,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
 
+from django.contrib.postgres.search import SearchVector
 
 def home(request):
   set1 = Set.objects.get(id=1)
@@ -65,7 +66,6 @@ def unassoc_group(request, user_id, group_id):
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.flashcard_set.all()
-  print('this is set', set)
   return render(request, 'sets/show.html', {
     'set': set, 'flashcards' : flashcards, 'mainclass' : "thin-body"
     })
@@ -167,3 +167,15 @@ def unassoc_set(request, group_id, set_id):
   Group.objects.get(id=group_id).sets.remove(set_id)
   return redirect('show_group', group_id=group_id)
 
+# Search
+def search_sets(request):
+  query = request.GET.get('search_query')
+
+  search_vectors = Set.objects.annotate(search=SearchVector('name', 'subject', 'description'))
+
+  search_results = search_vectors.filter(search=query)
+
+  return render(request, 'search/sets.html', {
+    'query': query,
+    'search_results': search_results,
+  })
