@@ -62,13 +62,13 @@ footer.page-footer {
     .logoText{
     margin: 0 72px;
     font-weight: bold;
-    }  
+    }   
 }
 
 .home1Wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 17fr .5fr;
+    grid-template-rows: 12fr .5fr;
 }
 
 .homeImage{
@@ -83,16 +83,27 @@ footer.page-footer {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
     margin-bottom: -25px;
-    margin-left: 20px;
-    width: 100%;
+    margin-left: 92px;
+    width: 70%;
+    height: 204%;
+    font-size: larger;
+    line-height: 61px;
+    text-align: center;
     border-radius: 10px;
     background-color: rgb(31, 183, 210);
     color: white;
 }
+.signUp:hover {
+    background-color: #FFC74B;
+}
 
-.featureWrapper {
+.featureWrapper, .missionWrapper{
+    margin: 6em 0 8em 0;
+    padding: 2em;
+}
+
+.featureCards {
     display: grid;
-    margin-top: 14em;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -119,6 +130,21 @@ footer.page-footer {
 .featureDeck3 {
     grid-column: 3 / 4;
     margin: 50px 20px 20px 0;
+}
+
+.missionWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: aliceblue;
+}
+
+.missionImage {
+    width: 5em;
+    height: 8em;
+}
+
+.homepageMissionText {
+    grid-column: 1 / 3;
 }
 
 .thin-body {
