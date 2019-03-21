@@ -65,11 +65,18 @@ def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.get_flashcards()
   total = len(flashcards)
+  points = 0
   if request.GET.get('random') == 'random':
     flashcards = set.shuffle_cards()
+
+  if request.POST:
+    points = points + 1
+    return render(request, 'sets/show.html', {
+    'set': set, 'flashcards' : flashcards, 'total' : total, 'points' : points
+    })
   print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'total' : total
+    'set': set, 'flashcards' : flashcards, 'total' : total, 'points' : points
     })
 
 def signup(request):

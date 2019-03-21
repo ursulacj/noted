@@ -6,15 +6,11 @@
       </span>
     </a>
     <div class="card-action">
-      <div class="points">  </div> / <div class="total">{{ total }}</div>
+      <div class="points"> {{ points }} </div> / <div class="total">{{ total }}</div>
       Score <hr>
-      <form action="" method="get">
-          <input value="random" name="random" type="hidden"></input>
-          <button type="submit" class="btn">+</button>
-      </form>
-      <form action="" method="get">
-          <input value="random" name="random" type="hidden"></input>
-          <button type="submit" class="btn">-</button>
+      <form action="" method="POST">{% csrf_token %}
+          <input value="" name="random" type="hidden"></input>
+          <button type="submit" class="btn btn-floating">+</button>
       </form>
     </div>
 
@@ -35,7 +31,7 @@
 <br>
 
 <div class="carousel carousel-slider center thin-body" data-target="carousel">
-    {% for flashcard in flashcards %} 
+    {% for flashcard in flashcards %}
     <div class="carousel-item noted-blue card flashcards-slide" href="#one!">
       <span class="card-title white-text center">{{ flashcard.0 }}</span>
       <a class="btn waves-effect white grey-text darken-text-2 activator center flip-btn">flip</a>
