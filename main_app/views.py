@@ -21,14 +21,9 @@ from django.core.mail import send_mail, BadHeaderError
 from django.contrib.postgres.search import SearchVector
 
 def home(request):
-  set1 = Set.objects.get(id=1)
-  set2 = Set.objects.get(id=2)
-  set3 = Set.objects.get(id=3)
-  
+  sets =  Set.objects.all()[0:3]
   return render(request, 'home.html', {
-    'set1' : set1,
-    'set2' : set2,
-    'set3' : set3,
+    'sets' : sets,
   })
 
 def about(request):
