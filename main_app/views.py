@@ -171,11 +171,15 @@ def unassoc_set(request, group_id, set_id):
 def search(request):
   query = request.GET.get('search_query')
 
-  search_vectors = Set.objects.annotate(search=SearchVector('name', 'subject', 'description'))
-
-  search_results = search_vectors.filter(search=query)
+  # search sets for query
+  sets_search_vectors = Set.objects.annotate(search=SearchVector('name', 'subject', 'description'))
+  sets_search_results = sets_search_vectors.filter(search=query)
+  # search groups for query
+  groups_search_vectors = Group.objects.annotate(search=SearchVector('name'))
+  groups_search_results = groups_search_vectors.filter(search=query)
 
   return render(request, 'search/index.html', {
     'query': query,
-    'search_results': search_results,
+    'sets': sets_search_results,
+    'groups': groups_search_results,
   })

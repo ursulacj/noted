@@ -3,14 +3,63 @@
 <h3>Search results for:</h3>
 <h4 class="yellow-text">{{ query }}</h4>
 
-{% for set in search_results %}
-<a href="{% url 'show_set' set.id %}">
-  <p>
-    {{set.name}}
-  </p>
-</a>
-{% empty %}
-<p>Sorry you need to get better at searching. Look into your soul!</p>
-{% endfor %}
-
+<div class="row">
+  <div class="col s12 m6">
+  <h5>Sets</h5>
+    <table class="highlight centered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for set in sets %}
+        <tr>
+          <td>
+            <a href="{% url 'show_set' set.id %}">
+              {{set.name}}
+            </a>
+          </td>
+          <td>{{ set.subject }}</td>
+          <td>{{ set.description }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td>None</td>
+          <td>Querying</td>
+          <td>Sorry you need to get better at searching. Look into your soul!</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col s12 m6">
+    <h5>Groups</h5>
+    <table class="highlight centered">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for group in groups %}
+        <tr>
+          <td>
+            <a href="{% url 'show_group' group.id %}">
+              {{group.name}}
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td>Sorry you need to get better at searching. Do some soul searching!</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+  
 {% endblock %}
