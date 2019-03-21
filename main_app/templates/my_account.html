@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>My Sets</h3>
-{% for set in sets %} 
-    <a href="{% url 'show_set' set.id %}">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ set.name }}</span>
-                <p>Subject: {{ set.subject }}</p>
-                <p>Description: {{ set.description }}</p>
+<table>
+  <tr>
+    <th><h3>My Sets</h3></th>
+    <th><h3>My Groups</h3></th>
+  </tr>
+  <tr>
+    <td>
+        {% for set in sets %} 
+        <a href="{% url 'show_set' set.id %}">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ set.name }}</span>
+                    <p>Subject: {{ set.subject }}</p>
+                    <p>Description: {{ set.description }}</p>
+                </div>
             </div>
-        </div>
-    </a>
-{% endfor %}
-
-<h3>My Groups</h3>
-
-  {% if groups.count %}
+        </a>
+    {% endfor %}
+    </td>
+    <td>
+      {% if groups.count %}
       {% for group in groups %}
         <div class="card">
           <div class="card-content">
@@ -31,9 +36,13 @@
             </form>
           </div>
         </div>
-      {% endfor %}
-    {% else %}
-      <h5>You haven't joined any Gangs</h5>
-  {% endif %}
+        {% endfor %}
+      {% else %}
+        <h5>You haven't joined any Gangs</h5>
+      {% endif %}
+    </td>
+
+  </tr>
+</table>
 
 {% endblock %} 
