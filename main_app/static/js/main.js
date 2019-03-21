@@ -24,4 +24,12 @@ function initParallax(instances) {
         }
     }
 }
-initParallax(parallaxEls)
+initParallax(parallaxEls);
+
+// initialize the tool tips
+
+var tooltip = document.querySelector('.tooltipped');
+function initTooltip(tooltip) {
+    M.Tooltip.init(tooltip, { 'position' : 'bottom'});
+  };
+initTooltip(tooltip);

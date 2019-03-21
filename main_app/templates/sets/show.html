@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="card">
-    <span class="card-title"><h1>{{ set.name }}</h1></span>
+    <a class="tooltipped" data-position="bottom" data-tooltip="{{ set.description }}">
+      <span class="card-title"><h1>{{ set.name }}</h1>
+      </span>
+    </a>
     <div class="card-action">
             <a href="{% url 'update_set' set.id %}" class="btn">Edit Set</a>
             <a href="{% url 'create_flashcards' set.id %}" class="btn">Add/Edit Flashcards</a>
