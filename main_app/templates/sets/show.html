@@ -1,29 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
+<div class="card left">
     <a class="tooltipped" data-position="bottom" data-tooltip="{{ set.description }}">
-      <span class="card-title"><h1>{{ set.name }}</h1>
+      <span class="card-title"><h5>{{ set.name }}</h5>
       </span>
     </a>
     <div class="card-action">
-            <a href="{% url 'update_set' set.id %}" class="btn">Edit Set</a>
-            <a href="{% url 'create_flashcards' set.id %}" class="btn">Add/Edit Flashcards</a>
-            <a href="{% url 'delete_set' set.id %}" class="btn btn-red">Delete Set</a>
-          </div>
+      <div class="points">  </div> / <div class="total">{{ total }}</div>
+      Score <hr>
+      <form action="" method="get">
+          <input value="random" name="random" type="hidden"></input>
+          <button type="submit" class="btn">+</button>
+      </form>
+      <form action="" method="get">
+          <input value="random" name="random" type="hidden"></input>
+          <button type="submit" class="btn">-</button>
+      </form>
+    </div>
+
+
+    <div class="card-action">
+      <form action="" method="get">
+          <input value="random" name="random" type="hidden"></input>
+          <button type="submit" class="btn">Randomize!</button>
+      </form>
+    </div>
+    <div class="card-action">
+      <a href="{% url 'update_set' set.id %}" class="btn">Edit Set</a>
+      <a href="{% url 'create_flashcards' set.id %}" class="btn">Add/Edit Flashcards</a>
+      <a href="{% url 'delete_set' set.id %}" class="btn btn-red">Delete Set</a>
+    </div>
 </div>
 
 <br>
 
-<div class="carousel carousel-slider center" data-target="carousel">
+<div class="carousel carousel-slider center thin-body" data-target="carousel">
     {% for flashcard in flashcards %} 
     <div class="carousel-item noted-blue card flashcards-slide" href="#one!">
-      <span class="card-title white-text center">{{ flashcard.question }}</span>
+      <span class="card-title white-text center">{{ flashcard.0 }}</span>
       <a class="btn waves-effect white grey-text darken-text-2 activator center flip-btn">flip</a>
       <div class="card-reveal noted-blue center flashcards-slide" href="#two!">
-        <span class="card-title center">{{ flashcard.answer }}</span>
+        <span class="card-title center">{{ flashcard.1 }}</span>
         <a class="card-title btn waves-effect white grey-text darken-text-2 center flip-btn">flip</a>
       </div>
     </div>
   {% endfor %}
-</div>
+
+
+  </div>
+
 {% endblock %}

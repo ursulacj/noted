@@ -5,8 +5,8 @@
 <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
 <h1>Add a Set</h1>
+<form action="" method="post" class="thin-body">
 {% endif %}
-<form action="" method="post">
     {% csrf_token %}
     <table>
       {{ form.as_table }}

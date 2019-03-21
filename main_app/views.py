@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+import random
 
 from .models import Set, Flashcard, Group
 from django.contrib.auth.models import User
@@ -62,9 +63,13 @@ def unassoc_group(request, user_id, group_id):
 
 def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
-  flashcards = set.flashcard_set.all()
+  flashcards = set.get_flashcards()
+  total = len(flashcards)
+  if request.GET.get('random') == 'random':
+    flashcards = set.shuffle_cards()
+  print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'mainclass' : "thin-body"
+    'set': set, 'flashcards' : flashcards, 'total' : total
     })
 
 def signup(request):
