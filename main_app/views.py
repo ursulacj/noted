@@ -18,6 +18,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail, BadHeaderError
 
+from math import ceil
+
+from django import template
+ 
+register = template.Library()
+
 
 def home(request):
   set1 = Set.objects.get(id=1)
@@ -148,5 +154,3 @@ def show_group(request, group_id):
 
 class GroupList(LoginRequiredMixin, ListView):
   model = Group
-    
-
