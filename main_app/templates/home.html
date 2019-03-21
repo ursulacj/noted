@@ -11,98 +11,74 @@
 <div class="featureWrapper">
     <div class="featureText">Featured Sets</div>
 
-    <!-- featureCards wrap around the cards -->
+    <!-- featuredCards section -->
     <div class="featureCards"> 
-        <div class="card featureDeck1">
+        {% for set in sets %}
+        <div class="card featureDeck">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="/static/images/test.jpeg">
             </div>
-        <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4 left">{{ set1.name }}</span><p><a href="{% url 'show_set' set1.id %}">See Flashcards!</a></p>
-        </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4 left-align">{{ set1.name }}<i class="material-icons right">close</i></span>
-                <p>{{ set1.subject }}</p>
-                <p>{{ set1.description }}</p>
-                <a href="{% url 'show_set' set1.id %}" class="bottom-align">See Flashcards!</a>
-            </div>
-        </div>
-        <div class="featureDeck2 card">
-            <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="/static/images/test.jpeg">
-                </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4 left">{{ set2.name }}</span><p><a href="{% url 'show_set' set2.id %}">See Flashcards!</a></p>
+                <span class="card-title activator grey-text text-darken-4 left">{{ set.name }}</span><p><a href="{% url 'show_set' set.id %}">See Flashcards!</a></p>
             </div>
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4 left-align">{{ set2.name }}<i class="material-icons right">close</i></span>
-                <p>{{ set2.subject }}</p>
-                <p>{{ set2.description }}</p>
-                <a href="{% url 'show_set' set2.id %}" class="bottom-align">See Flashcards!</a>
+                <span class="card-title grey-text text-darken-4 left-align">{{ set.name }}<i class="material-icons right">close</i></span>
+                <p>{{ set.subject }}</p>
+                <p>{{ set.description }}</p>
+                <a href="{% url 'show_set' set.id %}" class="bottom-align">See Flashcards!</a>
             </div>
         </div>
-        <div class="featureDeck3 card">
-            <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="/static/images/test.jpeg">
-                </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4 left">{{ set3.name }}<i class="material-icons right"></i></span><p><a href="{% url 'show_set' set3.id %}">See Flashcards!</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4 left-align">{{ set3.name }}<i class="material-icons right">close</i></span>
-                <p>{{ set3.subject }}</p>
-                <p>{{ set3.description }}</p>
-                <br>
-                <a href="{% url 'show_set' set3.id %}" class="bottom-align">Go to the Flashcards!</a>
-            </div>
-        </div>
-
-
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="card horizontal feature">
-            <div class="card-stacked">
-                <div class="card-action">
-                <a href="#">LOREM IPSUM SET NAME</a>
-                </div>
-            </div>
-        </div>
-
+        {% empty %}
+        <p>Just a tad empty here.</p>
+        {% endfor %}
     </div>
+    <!-- featureCards wrap around the cards -->
 </div>
+
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="card horizontal feature">
+            <div class="card-stacked">
+                <div class="card-action">
+                <a href="#">LOREM IPSUM SET NAME</a>
+                </div>
+            </div>
+        </div>
+
+
 
 <div class = "missionWrapper">
     <div class="missionSection Image1"><img src="/static/images/grandma.jpg" alt="grandma" class="missionImage Image1"></div>
