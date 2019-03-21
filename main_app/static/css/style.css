@@ -117,7 +117,7 @@ footer.page-footer {
     font-size: -webkit-xxx-large;
 }
 
-.featureDeck1, .featureDeck2, .featureDeck3 {
+.featureDeck {
     margin: 50px 20px 20px 0;
     grid-row: 2 / 3;
 }
