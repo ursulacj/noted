@@ -37,6 +37,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -58,9 +59,10 @@ footer.page-footer {
     .container {
         width: 100% !important;
     }
-    .logoText {
-        margin: 0 60px;
-    }    
+    .logoText{
+    margin: 0 72px;
+    font-weight: bold;
+    }  
 }
 
 .home1Wrapper {
