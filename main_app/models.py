@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.forms import modelformset_factory, inlineformset_factory
-import random
 
 from django.contrib.auth.models import User
 
@@ -34,15 +33,16 @@ class Set(models.Model):
       cards.append((card.question, card.answer, card.id))
     return cards
 
-
-
 class Group(models.Model):
   name = models.CharField(max_length=200)
+  description = models.TextField(max_length=500)
   sets = models.ManyToManyField(Set)
   users = models.ManyToManyField(User)
+  admin = models.ForeignKey(User, related_name='admin', on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name
+
   def get_absolute_url(self):
     return reverse('sets_index')
 
