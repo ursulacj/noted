@@ -29,8 +29,8 @@ initTooltip(tooltip);
 
 //select for sets
 var selectEl = document.getElementById('id_sets');
-  M.FormSelect.init(selectEl)
-  
+    M.FormSelect.init(selectEl)
+
 // select users
 var selectEl2 = document.getElementById('id_users');
     M.FormSelect.init(selectEl2)
