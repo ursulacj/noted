@@ -151,20 +151,38 @@ def groups_index(request):
 
 class GroupCreate(CreateView):
   model = Group
-  fields = '__all__'
+  fields = ['name', 'description']
+
+  def form_valid(self, form):
+    # Assign the logged in user to the group
+    form.instance.user = self.request.user
+    form.instance.admin = self.request.user
+    return super().form_valid(form)
+
+  def get_success_url(self):
+      return reverse('show_group', args=(self.object.id,))
 
 def show_group(request, group_id):
   group = Group.objects.get(id=group_id)
+  # check if user logged in is the admin of the group
+  is_admin = False
+  if request.user.id == group.admin.id:
+    is_admin = True
   users_not_in_group = User.objects.exclude(id__in = group.users.all().values_list('id'))
   sets_not_in_group = Set.objects.exclude(id__in = group.sets.all().values_list('id'))
   return render(request, 'groups/show.html', {
     'group': group, 
     'users_not_in_group': users_not_in_group,
     'sets_not_in_group': sets_not_in_group,
+    'is_admin': is_admin,
   })
 
 class GroupList(LoginRequiredMixin, ListView):
   model = Group
+
+def join_group(request, group_id, user_id):
+  Group.objects.get(id=group_id).users.add(user_id)
+  return redirect('show_group', group_id=group_id)
 
 def assoc_user(request, group_id, user_id):
   Group.objects.get(id=group_id).users.add(user_id)
