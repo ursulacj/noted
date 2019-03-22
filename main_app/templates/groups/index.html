@@ -3,26 +3,24 @@
 
 <h1>Groups</h1>
 <a href="{% url 'create_group' %}" class="btn">Create a gang</a>
-{% for group in groups %} 
-<div class="card">
-  <div class="card-content">
-    <a href="{% url 'show_group' group.id %}">
-      <span class="card-title">Group Name: {{ group.name }}</span>
-    </a>
-    <h5>View Sets</h5>
-    {% for set in group.sets.all %} 
-    <p>{{ set.name }}</p>
-    <p>Description: {{ set.description }}</p>
-    {% empty %}
-    <p>No sets currently in this group</p>
-    {% endfor %}
-  </div>
-</div>
-  {% empty %}
-  <div class="card">
-      <div class="card-content">
-          <span class="card-title">It's a bit empty here</span>
+<div class="row">
+    <div class="col m6 s12 offset-m3">
+      {% for group in groups %} 
+      <div class="card">
+        <div class="card-content">
+          <a href="{% url 'show_group' group.id %}">
+            <span class="card-title">Group Name: {{ group.name }}</span>
+          </a>
+          <p>Description: {{ group.description }}</p>
+        </div>
       </div>
-  </div>
-{% endfor %}
+        {% empty %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">It's a bit empty here</span>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
 {% endblock %}
