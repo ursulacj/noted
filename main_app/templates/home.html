@@ -4,7 +4,7 @@
 <!-- "home1Wrapper" wraps around the home image section -->
 <div class="home1Wrapper">
     <div class="homeImage"></div>
-    <a class="waves-effect waves-light signUp" href="{% url 'signup' %}">Sign Up For Free!</a>
+    <a class="center waves-effect waves-light signUp" href="{% url 'signup' %}">Sign Up For Free!</a>
 </div>
 
 <!-- featureWrapper wraps around the featured sets section  -->
@@ -16,7 +16,7 @@
         {% for set in sets %}
         <div class="card featureDeck">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/static/images/test.jpeg">
+                <img class="activator" src="{{set.image_url}}">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4 left">{{ set.name }}</span><p><a href="{% url 'show_set' set.id %}">See Flashcards!</a></p>
@@ -34,7 +34,6 @@
     </div>
     <!-- featureCards wrap around the cards -->
     <div class="horiFeatureWrapper">
-
         <div class="card horizontal feature">
             <div class="card-stacked">
                 <div class="row hori card-content valign-wrapper">
@@ -221,40 +220,47 @@
     <div class="goonSquadWrapper">
         <div class="team card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="static/images/dude.jpg">
+                <img class="activator prof-pic" src="static/images/dude.jpg">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Ursula Cedillo-Johnson<i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4">Ursula Cedillo-Johnson</span>
             </div>
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <span class="card-title grey-text text-darken-4">Drop, drop, drop, what what what<i class="material-icons right">close</i></span>
+                <p>After you back it up then stop
+                        What, what, wha, drop it like its hot
+                        After you back it up and stop
+                        What, what, wha, drop it like its hot
+                        Now drop it like it's hot, drop drop it like its hot
+                        Drop it like it's hot, drop drop it like it's hot
+                        Make em' drop it like its hot, drop drop it like its hot
+                        Drop it like it's hot, drop drop it like it's hot</p>
             </div>
         </div>
 
         <div class="team card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="static/images/dude.jpg">
+                <img class="activator prof-pic" src="static/images/son.png">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Son Truong<i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4">Son Truong</span>
             </div>
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <span class="card-title grey-text text-darken-4">He Hails from the Land Called Oklahoma<i class="material-icons right">close</i></span>
+                <p>Where the wind comes sweeping down the plain. Where the wavy wheats can sure smell sweet when the wind comes right behind the rain.</p>
             </div>
         </div>
 
         <div class="team card">
             <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="static/images/dude.jpg">
+                    <img class="activator prof-pic" src="static/images/anna.jpg">
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Anna Peterson<i class="material-icons right">more_vert</i></span>
+                    <span class="card-title activator grey-text text-darken-4">Anna Peterson</span>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    <span class="card-title grey-text text-darken-4">I like Sunshine<i class="material-icons right">close</i></span>
+                    <p>Anna moved to Texas after leaving her life as the world's most reknowned accountant-turned-smash-poet. She enjoys web development and sunshine.</p>
                 </div>
         </div>
     </div>

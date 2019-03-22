@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main_app',
-    'django.contrib.postgres',
+    'main_app.templatetags',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,4 +124,4 @@ EMAIL_PORT = 1025
 import django_heroku
 django_heroku.settings(locals())
 
-
+import listutils

@@ -12,6 +12,7 @@ class Set(models.Model):
   subject = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  image_url = models.CharField(max_length=200, default='static/images/test.jpeg')
 
   def get_absolute_url(self):
     return reverse('show_set', kwargs={ 'set_id': self.id })

@@ -45,10 +45,10 @@ def contact_us(request):
       except BadHeaderError:
         return HttpResponse('Invalid header found.')
       return redirect('success')
-  return render(request, 'contact_us.html', {'form' : form, 'mainclass' : "thin"})
+  return render(request, 'contact_us.html', {'form' : form, 'mainclass' : "thin-body"})
 
 def successView(request):
-  return render(request, 'success.html', {'mainclass' : "thin"})
+  return render(request, 'success.html', {'mainclass' : "thin-body"})
 
 def sets_index(request):
   sets = Set.objects.filter(user = request.user)
@@ -72,12 +72,11 @@ def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.get_flashcards()
   total = len(flashcards)
+  clicktotal = len(flashcards)
   if request.GET.get('random') == 'random':
     flashcards = set.shuffle_cards()
-  print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'total' : total
-    })
+    'set': set, 'flashcards' : flashcards, 'total' : total, 'clicktotal' : clicktotal })
 
 def signup(request):
   error_message = ''
@@ -101,7 +100,7 @@ def signup(request):
 #Sets
 class SetCreate(CreateView):
   model = Set
-  fields = ['name', 'subject', 'description']
+  fields = ['name', 'subject', 'description', 'image_url']
 
   def form_valid(self, form):
     # Assign the logged in user to the set

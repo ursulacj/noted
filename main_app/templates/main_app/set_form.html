@@ -10,10 +10,6 @@
     {% csrf_token %}
     <table>
       {{ form.as_table }}
-      {% for field in form %}
-      <input type="checkbox" id="{{ field.id }}" />
-        <label for="field.id"></label>
-      {% endfor %}
     </table>
     <input type="submit" value="Submit!" class="btn">
   </form>
