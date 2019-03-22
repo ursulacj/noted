@@ -72,19 +72,12 @@ def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.get_flashcards()
   total = len(flashcards)
-  points = 0
   if request.GET.get('random') == 'random':
     flashcards = set.shuffle_cards()
 
-  if request.POST:
-    points = points + 1
-    return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'total' : total, 'points' : points
-    })
   print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'total' : total, 'points' : points
-    })
+    'set': set, 'flashcards' : flashcards, 'total' : total })
 
 def signup(request):
   error_message = ''
@@ -108,7 +101,7 @@ def signup(request):
 #Sets
 class SetCreate(CreateView):
   model = Set
-  fields = ['name', 'subject', 'description']
+  fields = ['name', 'subject', 'description', 'image_url']
 
   def form_valid(self, form):
     # Assign the logged in user to the set

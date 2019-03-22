@@ -27,6 +27,25 @@ function initTooltip(tooltip) {
 };
 initTooltip(tooltip);
 
+//select for sets
+var selectEl = document.getElementById('id_sets');
+  M.FormSelect.init(selectEl)
+  
+// select users
+var selectEl2 = document.getElementById('id_users');
+    M.FormSelect.init(selectEl2)
+
+//checkbox
+var checkboxEl = document.querySelectorAll("input[type='checkbox']");
+function initCheck(instances) {
+    if (instances.length > 0) {
+        console.log('this is checkbox', checkboxEl)
+        for(var i = 0; i < instances.length; i++) {
+            instances[i].insertAdjacentHTML("afterend", '<label for="id_flashcard_set-0-DELETE">');
+        }
+    }
+}
+initCheck(checkboxEl)
 
 //flashcards
 

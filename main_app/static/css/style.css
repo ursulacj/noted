@@ -190,7 +190,17 @@ a.dashAnchor {
     color: black;
 }
 
+.flashcard-form [type="checkbox"]:not(:checked), .flashcard-form [type="checkbox"]:checked {
+    position: static!important;
+    left: 0px!important;
+    opacity: 1!important;
+    visibility: visible!important;
+    pointer-events: all!important;
+}
 
+.prof-pic {
+    border-radius: 100%!important;
+}
 
 .footer-ul {
     font-size: 1.2em;

@@ -6,10 +6,10 @@
       </span>
     </a>
     <div class="card-action">
-      <div class="points"> {{ points }} </div> / <div class="total">{{ total }}</div>
+      <div class="points"> 0 </div> / <div class="total">{{ total }}</div>
       Score <hr>
       <form action="" method="POST">{% csrf_token %}
-          <input value="" name="random" type="hidden"></input>
+          <input value="{{ points }}" name="{{ points }}" type="hidden"></input>
           <button type="submit" class="btn btn-floating">+</button>
       </form>
     </div>
