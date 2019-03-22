@@ -72,12 +72,11 @@ def show_set(request, set_id):
   set = Set.objects.get(id=set_id)
   flashcards = set.get_flashcards()
   total = len(flashcards)
+  clicktotal = len(flashcards)
   if request.GET.get('random') == 'random':
     flashcards = set.shuffle_cards()
-
-  print(flashcards)
   return render(request, 'sets/show.html', {
-    'set': set, 'flashcards' : flashcards, 'total' : total })
+    'set': set, 'flashcards' : flashcards, 'total' : total, 'clicktotal' : clicktotal })
 
 def signup(request):
   error_message = ''

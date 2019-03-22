@@ -50,3 +50,36 @@ initCheck(checkboxEl)
 //flashcards
 
 
+/*----- app's state (variables) -----*/ 
+let count = 0;
+let inputVal = 0;
+
+
+/*----- cached element references -----*/ 
+
+
+
+/*----- event listeners -----*/ 
+
+var plus = document.getElementById("plus")
+var minus = document.getElementById("minus")
+
+plus.addEventListener('click', addOne)
+minus.addEventListener('click', minusOne)
+
+/*----- functions -----*/
+
+function addOne() {
+    count += 1
+    render();
+};
+
+function minusOne() {
+    count += -1;
+    render();
+};
+
+function render() {
+    document.getElementById("number-clicks").innerHTML = count;
+    count < 0 ? document.getElementById("number-clicks").style.color = 'red' : document.getElementById("number-clicks").style.color = 'black'
+};

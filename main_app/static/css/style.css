@@ -208,3 +208,15 @@ a.dashAnchor {
     justify-content: center;
     align-content: space-between;
 }
+
+.sets-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.click-input {
+    display: none;
+}

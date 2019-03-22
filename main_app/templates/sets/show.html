@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card left">
+<div class="sets-wrapper">
+<div class="card left ">
     <a class="tooltipped" data-position="bottom" data-tooltip="{{ set.description }}">
       <span class="card-title"><h5>{{ set.name }}</h5>
       </span>
     </a>
-    <div class="card-action">
-      <div class="points"> 0 </div> / <div class="total">{{ total }}</div>
-      Score <hr>
-      <form action="" method="POST">{% csrf_token %}
-          <input value="{{ points }}" name="{{ points }}" type="hidden"></input>
-          <button type="submit" class="btn btn-floating">+</button>
-      </form>
+    <div class="card-action"><section id="click-counter">
+        Score
+      <span class="points"><div id="count"><span id="number-clicks">0 </span> 
+      </div> 
+        <b>{{ total }}</b> flashcards in this set</span> <br>
+        <div><br>
+          <button id="plus" class="btn btn-floating" >+</button>
+          <button id="minus" class="btn btn-floating">-</button>
+        </div>
+      </section>
+
+
     </div>
 
 
@@ -44,5 +50,5 @@
 
 
   </div>
-
+</div>
 {% endblock %}
