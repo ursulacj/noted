@@ -1,60 +1,99 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card">
-    <span class="card-title">{{ group.name }}</span>
-</div>
-<div class="card">
-    <span class="card-title">Display members here</span>
-    {% for user in group.users.all %}
-        <p>{{ user }}</p>
-        <form action="{% url 'unassoc_user' group.id user.id %}" method="post">
+<h1>{{ group.name }}</h1>
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col m6 s12 offset-m3">
+        <form action="{% url 'join_group' group.id user.id %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn">Exile</button>
+            <button type="submit" class="btn">Join Group</button>
         </form>
-    {% empty %}
-        <p>This group has no members</p>
-    {% endfor %}
+    </div>
 </div>
-<div class="card">
-    <span class="card-title">Pool of unrecruited gang members</span>
-    {% for user in users_not_in_group %}
-        <p>{{ user }}</p>
-        <form action="{% url 'assoc_user' group.id user.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn">Recruit {{ user }}</button>
-        </form>
-    {% empty %}
-        <p>You recruited the world!</p>
-    {% endfor %}
-</div>
-<div class="card">
-    <span class="card-title">Learn from this group's sets!</span>
-    {% for set in group.sets.all %}
-    <a href="{% url 'show_set' set.id %}">
-        <p>{{ set }}</p>
-    </a>
-    <form action="{% url 'unassoc_set' group.id set.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn">X</button>
-    </form>
-    {% empty %}
-        <p>This group has no sets</p>
-    {% endfor %}
-</div>
-<div class="card">
-    <span class="card-title">Add sets to this group</span>
-    {% for set in sets_not_in_group %}
-    <a href="{% url 'show_set' set.id %}">
-        <p>{{ set }}</p>
-    </a>
-    <form action="{% url 'assoc_set' group.id set.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn">+</button>
-    </form>
-    {% empty %}
-        <p>This group has all the sets</p>
-    {% endfor %}
+{% endif %}
+<i class="material-icons tooltipped" data-position="right" data-tooltip="{{ group.description }}">info_outline</i>
+<div class="row">
+    <div class="col m6 s12 offset-m3">
+
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">people</i>Gang Members</div>
+                <div class="collapsible-body">
+                    {% for user in group.users.all %}
+                    <p>{{ user }}</p>
+                    {% if is_admin %}
+                    <form action="{% url 'unassoc_user' group.id user.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Exile</button>
+                    </form>
+                    {% endif %}
+                    {% empty %}
+                        <p>This group has no members</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% if is_admin %}
+            <li>
+                <div class="collapsible-header"><i class="material-icons">person_add</i>Recruit Gang Members</div>
+                <div class="collapsible-body">
+                    {% for user in users_not_in_group %}
+                    <p>{{ user }}</p>
+                    {% if is_admin %}
+                    <form action="{% url 'assoc_user' group.id user.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn pulse"><i class="material-icons">add</i></button>
+                    </form>
+                    {% endif %}
+                    {% empty %}
+                        <p>You recruited the world!</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+            <li>
+                <div class="collapsible-header"><i class="material-icons">library_books</i>Group Sets</div>
+                <div class="collapsible-body">
+                    {% for set in group.sets.all %}
+                    <a href="{% url 'show_set' set.id %}">
+                        <p>{{ set }}</p>
+                    </a>
+                    {% if is_admin %}
+                    <form action="{% url 'unassoc_set' group.id set.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn"><i class="material-icons">clear</i></button>
+                    </form>
+                    {% endif %}
+                    {% empty %}
+                        <p>This group has no sets</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% if is_admin %}
+            <li>
+                <div class="collapsible-header"><i class="material-icons">library_add</i>Add Sets</div>
+                <div class="collapsible-body">
+                    {% for set in sets_not_in_group %}
+                    <a href="{% url 'show_set' set.id %}">
+                        <p>{{ set }}</p>
+                    </a>
+                    <form action="{% url 'assoc_set' group.id set.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn pulse"><i class="material-icons">add</i></button>
+                    </form>
+                    {% empty %}
+                        <p>This group has all the sets</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
 </div>
 
+<script>
+// initialize the collapsible
+var collapsibleEl = document.querySelector('.collapsible');
+M.Collapsible.init(collapsibleEl);
+</script>
 {% endblock %}
