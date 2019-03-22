@@ -12,9 +12,6 @@ nav {
     align-items: center;
 }
 
-/* .parallax-container .parallax img {
-    opacity: 100;
-} */
 
 .setSearch {
     height: 64px;
@@ -101,7 +98,7 @@ footer.page-footer {
     margin: 6em 0 8em 0;
 }
 
-.featureCards, .goonSquadWrapper {
+.featureCards, .horiFeatureWrapper, .goonSquadWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -122,8 +119,32 @@ footer.page-footer {
     grid-row: 2 / 3;
 }
 
+.row.hori.card-content.valign-wrapper {
+    padding-top: 10px !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.col.s4 {
+    padding: 0 !important;
+}
+
+.col.s9 {
+    padding: 0 !important;
+    display: flex;
+}
+
+.card-action {
+    font-size: large;
+    border-top: none !important;
+    text-align: left;
+}
+
+
 .card.horizontal.feature {
-    margin: 50px 20px 20px 0;
+    margin: 4px 20px !important;
+    width: 90%;
 }
 
 .missionWrapper {
@@ -191,6 +212,9 @@ a.dashAnchor {
 }
 
 
+.footerHover:hover {
+    background-color: rgba(0,0,0, .25);
+}
 
 .footer-ul {
     font-size: 1.2em;
